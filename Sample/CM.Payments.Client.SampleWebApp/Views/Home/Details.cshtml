@@ -1,0 +1,64 @@
+﻿@model CM.Payments.Client.SampleWebApp.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="row product-detail">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 left-bar">
+        <img class="img-responsive img-centre" src="@Url.Content($"~/Content/images/{Model.Image}")" alt=""/>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 right-bar">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>
+                    @Model.Title <small>&euro;@Model.Price.ToString("F")</small>
+                </h3>
+            </div>
+            <div class="col-lg-12">
+                @Model.Description
+            </div>
+            <div class="col-lg-12 order-section">
+                <div class="form-group">
+                    <select class="form-control" id="quantity">
+                        @for (var i = 1; i <= 10; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <a href="#" id="cartButton" class="btn btn-success btn-block" type="submit">
+                        Add to cart
+                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        $("#message").hide();
+        $("#cartButton")
+            .click(function() {
+                var quantity = $("#quantity").val();
+                $.ajax({
+                    url: "@Url.Action("Details")",
+                    method: "POST",
+                    data: { id: @Model.Id, quantity: quantity },
+                    success: function(data) {
+                        $(".product-detail")
+                            .prepend("<div class=\"alert-col col-lg-12 col-md-12 col-sm-12 col-xs12\"><div class=\"alert alert-success\" id=\"message\" role=\"alert\"><strong>@(Model.Title)</strong> is added to your cart!<a class=\"close\" data-dismiss=\"alert\">×</a></div></div>");
+                        $("#cart-amount").text(data);
+                        $(".alert-success").fadeTo(2000, 500).slideUp(500,
+                            function() {
+                                $(".alert-success").alert('close');
+                                $(".alert-col").remove();
+                            });
+                    }
+                });
+            });
+    });
+</script>

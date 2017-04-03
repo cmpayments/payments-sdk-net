@@ -1,0 +1,84 @@
+﻿@model CM.Payments.Client.SampleWebApp.Models.Order
+
+@{
+    ViewBag.Title = "Cart";
+}
+@if (Model?.OrderItems.Count > 0)
+{
+    <div class="row bs-wizard" style="border-bottom: 0;">
+        <div class="col-xs-3 bs-wizard-step active">
+            <div class="text-center bs-wizard-stepnum">Cart</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <a href="#" class="bs-wizard-dot"></a>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step disabled">
+            <div class="text-center bs-wizard-stepnum">Details</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <a href="#" class="bs-wizard-dot"></a>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step disabled">
+            <div class="text-center bs-wizard-stepnum">Payment</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <a href="#" class="bs-wizard-dot"></a>
+        </div>
+        <div class="col-xs-3 bs-wizard-step disabled">
+            <div class="text-center bs-wizard-stepnum">Confirmation</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <a href="#" class="bs-wizard-dot"></a>
+        </div>
+    </div>
+
+    var i = 1;
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Product Name</th>
+            <th>Price per unit</th>
+            <th>Quantity</th>
+            <th>Total price</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var e in Model.OrderItems)
+        {
+            <tr>
+                <th scope="row">@(i++)</th>
+                <td>
+                    <a href="@Url.Action("Details", new {id = e.Product.Id})">@e.Product.Title</a>
+                </td>
+                <td>&euro;@e.Product.Price.ToString("F")</td>
+                <td>@e.Quantity</td>
+                <td>&euro;@e.GetTotalPrice().ToString("F")</td>
+            </tr>
+        }
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="4"></td>
+            <td><strong>Total:</strong> &euro; @Model.GetTotalCost().ToString("F")</td>
+        </tr>
+        </tfoot>
+    </table>
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <a href="@Url.Action("Index", "Checkout")" class="btn btn-success pull-right">Checkout</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning" id="message" role="alert">
+        <strong>Oops!</strong> Seems like you didn't order anything yet. <a href="@Url.Action("Index")">Order here.</a>
+    </div>
+}

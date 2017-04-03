@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CM.Payments.Client.SampleWebApp", "CM.Payments.Client.SampleWebApp\CM.Payments.Client.SampleWebApp.csproj", "{586C2877-FF59-4325-85F7-8332DD924370}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CM.Payments.Client.SampleWebApp.Tests", "CM.Payments.Client.SampleWebApp.Tests\CM.Payments.Client.SampleWebApp.Tests.csproj", "{34D64341-23EB-4B51-8F8A-01E6B70B82C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{586C2877-FF59-4325-85F7-8332DD924370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{586C2877-FF59-4325-85F7-8332DD924370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{586C2877-FF59-4325-85F7-8332DD924370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{586C2877-FF59-4325-85F7-8332DD924370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34D64341-23EB-4B51-8F8A-01E6B70B82C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34D64341-23EB-4B51-8F8A-01E6B70B82C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34D64341-23EB-4B51-8F8A-01E6B70B82C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34D64341-23EB-4B51-8F8A-01E6B70B82C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
