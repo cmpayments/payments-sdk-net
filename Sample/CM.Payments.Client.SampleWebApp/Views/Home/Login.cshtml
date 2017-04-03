@@ -1,0 +1,54 @@
+﻿@model CM.Payments.Client.SampleWebApp.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<div class="row">
+    <div class="col-md-4 col-sm-8 col-sm-offset-2 col-md-offset-4">
+        @if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+        {
+            <div class="alert alert-danger" id="message" role="alert">
+                <a class="close" data-dismiss="alert">×</a>
+                <strong>Oops!</strong> Entered a wrong username or password.
+            </div>
+        }
+        <div class="panel panel-default">
+            <div class="panel-heading">Login</div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post, new {@class = "form-horizontal"}))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Username, new {@class = "control-label col-md-4"})
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.Username, new {@class = "form-control", placeholder = "Username"})
+                            @Html.ValidationMessageFor(model => model.Username, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, new {@class = "control-label col-md-4"})
+                        <div class="col-md-8">
+                            @Html.PasswordFor(model => model.Password, new {@class = "form-control", placeholder = "Password"})
+                            @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="submit" id="login" value="Login" class="btn btn-success pull-right"/>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-info" id="info" role="alert">
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    Want to try it out? Login with username and password <strong>demo</strong>.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

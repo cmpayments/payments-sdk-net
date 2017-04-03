@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CM.Payments.Client.SampleWebApp.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+            <a href="@Url.Action("Details", new {id = item.Id})">
+                <div class="thumbnail">
+                    <span class="label label-primary">&euro;@item.Price.ToString("F")</span>
+                    <div class="image">
+                        <img class="img-responsive" src="@Url.Content($"~/Content/images/{item.Thumbnail}")">
+                    </div>
+                    <h4>@item.Title</h4>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+@if (ViewBag.PageCount > 1)
+{
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagination-lg">
+            <li class="@(ViewBag.Current <= 1 ? "disabled" : "")">
+                <a href="@Url.Action("Index", null, new {page = ViewBag.Current - 1})" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @for (var i = 1; i <= ViewBag.PageCount; i++)
+            {
+                <li class="@(ViewBag.Current == i ? "active" : "")">
+                    <a href="@Url.Action("Index", null, new {page = i})">@i</a>
+                </li>
+            }
+            <li class="@(ViewBag.Current >= ViewBag.PageCount ? "disabled" : "")">
+                <a href="@Url.Action("Index", null, new {page = ViewBag.Current + 1})" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+}

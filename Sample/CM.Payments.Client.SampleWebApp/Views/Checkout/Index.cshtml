@@ -1,0 +1,150 @@
+﻿@using CM.Payments.Client.SampleWebApp.Models
+@model OrderModel
+@{
+    ViewBag.Title = "Checkout";
+}
+<div class="row bs-wizard" style="border-bottom:0;">
+
+    <div class="col-xs-3 bs-wizard-step complete">
+        <div class="text-center bs-wizard-stepnum">Cart</div>
+        <div class="progress"><div class="progress-bar"></div></div>
+        <a href="@Url.Action("Cart", "Home")" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step active">
+        <div class="text-center bs-wizard-stepnum">Details</div>
+        <div class="progress"><div class="progress-bar"></div></div>
+        <a href="#" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step disabled">
+        <div class="text-center bs-wizard-stepnum">Payment</div>
+        <div class="progress"><div class="progress-bar"></div></div>
+        <a href="#" class="bs-wizard-dot"></a>
+    </div>
+    <div class="col-xs-3 bs-wizard-step disabled">
+        <div class="text-center bs-wizard-stepnum">Confirmation</div>
+        <div class="progress"><div class="progress-bar"></div></div>
+        <a href="#" class="bs-wizard-dot"></a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-7">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.City, new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PostalCode, new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateOfBirth, new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Proceed" class="btn btn-success pull-right" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Order summary <small>@ViewBag.Order.OrderItems.Count item(s)</small></h3>
+            </div>
+            <div class="panel-body">
+                @foreach (OrderItem e in ViewBag.Order.OrderItems)
+                {
+                    <div class="media clearfix">
+                        <div class="media-left media-middle pull-left">
+                            <img alt="64x64" width="70" class="media-object" src="@Url.Content($"~/Content/images/{e.Product.Image}")">
+                        </div>
+                        <div class="media-body pull-left">
+                            <h4 class="media-heading">@e.Product.Title</h4>
+                            <p><small>@e.Quantity x </small>&euro;@e.Product.Price </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">Subtotal:</div>
+                    <div class="col-md-3 col-md-offset-6"> &euro;@ViewBag.Order.GetTotalCost()</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Shipping:</div>
+                    <div class="col-md-3 col-md-offset-6">&euro;0,00</div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-3"><b>Total:</b></div>
+                    <div class="col-md-3 col-md-offset-6"><b>&euro;@ViewBag.Order.GetTotalCost()</b></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
