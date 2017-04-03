@@ -6,6 +6,9 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class CreditcardPaymentResponse : PaymentResponse
     {
+        /// <summary>
+        /// Details about the Creditcard payment.
+        /// </summary>
         [JsonProperty("payment_details")]
         public new CreditcardDetailsResponse Details
         {

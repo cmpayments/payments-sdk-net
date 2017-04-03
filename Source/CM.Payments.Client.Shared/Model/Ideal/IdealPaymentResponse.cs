@@ -6,6 +6,9 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class IdealPaymentResponse : PaymentResponse
     {
+        /// <summary>
+        /// The details for a iDEAL payment.
+        /// </summary>
         [JsonProperty("payment_details")]
         public new IdealDetailsResponse Details
         {

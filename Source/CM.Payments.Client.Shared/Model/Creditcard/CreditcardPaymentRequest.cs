@@ -6,6 +6,9 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class CreditcardPaymentRequest : PaymentRequest
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonProperty("capture")]
         public bool Capture { get; set; }
 
