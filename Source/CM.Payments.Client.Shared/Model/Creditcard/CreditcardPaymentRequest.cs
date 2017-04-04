@@ -3,9 +3,15 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// A credit card payment.
+    /// </summary>
     [PublicAPI]
     public sealed class CreditcardPaymentRequest : PaymentRequest
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonProperty("capture")]
         public bool Capture { get; set; }
 

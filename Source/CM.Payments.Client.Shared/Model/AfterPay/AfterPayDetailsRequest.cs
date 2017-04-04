@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Specific details for a AfterPay payment.
+    /// </summary>
     [PublicAPI]
     public class AfterPayDetailsRequest : DetailsRequest
     {
@@ -34,7 +37,7 @@ namespace CM.Payments.Client.Model
         public string IpAddress { get; set; }
 
         /// <summary>
-        ///     List of
+        ///     List of an order line.
         /// </summary>
         [JsonProperty("order_line")]
         public IEnumerable<OrderLine> Orderline { get; set; }
@@ -69,6 +72,9 @@ namespace CM.Payments.Client.Model
         [JsonProperty("total_order_amount")]
         public int TotalOrderAmount { get; set; }
 
+        /// <summary>
+        /// Information about one line in an order.
+        /// </summary>
         public class OrderLine
         {
             /// <summary>
@@ -108,6 +114,9 @@ namespace CM.Payments.Client.Model
             public AfterPayVatCategory VatCategory { get; set; }
         }
 
+        /// <summary>
+        /// Delivery address for the order.
+        /// </summary>
         public class OrderAddress
         {
             /// <summary>
@@ -158,6 +167,9 @@ namespace CM.Payments.Client.Model
             [JsonProperty("street_name")]
             public string StreetName { get; set; }
 
+            /// <summary>
+            /// Details about the customer.
+            /// </summary>
             public class ReferencePerson
             {
                 /// <summary>

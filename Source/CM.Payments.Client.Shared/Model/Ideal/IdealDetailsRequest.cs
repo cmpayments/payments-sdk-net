@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Specific details about an iDeal payment.
+    /// </summary>
     [PublicAPI]
     public class IdealDetailsRequest : DetailsRequest
     {

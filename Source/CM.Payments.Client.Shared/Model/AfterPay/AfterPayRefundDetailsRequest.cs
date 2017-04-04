@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Details for a AfterPay refund.
+    /// </summary>
     [PublicAPI]
     public class AfterPayRefundDetailsRequest : RefundDetailsRequest
     {
