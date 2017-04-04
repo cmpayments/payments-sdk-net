@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Specific details about a PayPal payment.
+    /// </summary>
     [PublicAPI]
     public class PayPalDetailsRequest : DetailsRequest
     {

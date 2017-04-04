@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Specific details about a Wire Transfer payment.
+    /// </summary>
     [PublicAPI]
     public sealed class WireTransferDetailsResponse : WireTransferDetailsRequest, IAuthenticatedResponse
     {

@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// An iDeal payment.
+    /// </summary>
     [PublicAPI]
     public sealed class IdealPaymentResponse : PaymentResponse
     {

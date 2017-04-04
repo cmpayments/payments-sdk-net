@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Contains details about a charge when it's received from the server.
+    /// </summary>
     public sealed class ChargeResponse
     {
         /// <summary>

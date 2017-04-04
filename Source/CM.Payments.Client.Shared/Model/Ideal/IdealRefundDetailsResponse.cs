@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Details about a iDeal refund.
+    /// </summary>
     [PublicAPI]
     public sealed class IdealRefundDetailsResponse : RefundDetailsResponse
     {

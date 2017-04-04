@@ -3,11 +3,14 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// An AfterPay payment.
+    /// </summary>
     [PublicAPI]
     public sealed class AfterPayPaymentRequest : PaymentRequest
     {
         /// <summary>
-        ///     Contains more in depth information about the Payment.
+        ///     Details for a AfterPay payment.
         /// </summary>
         [JsonProperty("payment_details")]
         public AfterPayDetailsRequest Details { get; set; }

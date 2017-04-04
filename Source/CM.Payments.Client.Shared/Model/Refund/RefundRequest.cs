@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Contains information to make a refund.
+    /// </summary>
     [PublicAPI]
     public sealed class RefundRequest
     {

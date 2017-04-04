@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Specific details about a credit card payment.
+    /// </summary>
     [PublicAPI]
     public sealed class CreditcardDetailsResponse : CreditcardDetailsRequest, IAuthenticatedResponse
     {

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// This will contain all information to make a payment.
+    /// </summary>
     public class ChargeRequest
     {
         /// <summary>

@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Specific details for a AfterPay payment.
+    /// </summary>
     [PublicAPI]
     public sealed class AfterPayDetailsResponse : AfterPayDetailsRequest, IAuthenticatedResponse
     {
@@ -17,6 +20,9 @@ namespace CM.Payments.Client.Model
         /// </summary>
         string IAuthenticatedResponse.AuthenticationUrl { get; set; }
 
+        /// <summary>
+        /// Information about the result.
+        /// </summary>
         public class ResultResponse
         {
             /// <summary>

@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Specific details for a SOFORT payment.
+    /// </summary>
     [PublicAPI]
     public sealed class SofortDetailsResponse : SofortDetailsRequest, IAuthenticatedResponse
     {

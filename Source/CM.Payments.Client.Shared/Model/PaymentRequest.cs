@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Details of a payment.
+    /// </summary>
     public abstract class PaymentRequest
     {
         [JsonProperty("payment_method")]

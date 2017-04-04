@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model
 {
+    /// <summary>
+    /// Specific details for a Bancontact payment.
+    /// </summary>
     [PublicAPI]
     public class BancontactDetailsRequest : DetailsRequest
     {
