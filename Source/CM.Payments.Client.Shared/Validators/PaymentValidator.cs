@@ -17,6 +17,7 @@ namespace CM.Payments.Client.Validators
             this.AddValidator<SofortPaymentRequest, SofortValidator>();
             this.AddValidator<BancontactPaymentRequest, BancontactValidator>();
             this.AddValidator<WireTransferPaymentRequest, WireTransferValidator>();
+            this.AddValidator<DirectDebitPaymentRequest, DirectDebitValidator>();
         }
 
         private static bool BeAValidIsoFormat(string currency)

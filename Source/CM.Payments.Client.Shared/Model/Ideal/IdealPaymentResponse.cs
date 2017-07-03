@@ -4,19 +4,19 @@ using Newtonsoft.Json;
 namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// An iDeal payment.
+    /// Details of the iDEAL payment response.
     /// </summary>
     [PublicAPI]
     public sealed class IdealPaymentResponse : PaymentResponse
     {
         /// <summary>
-        /// The details for a iDEAL payment.
+        /// In depth details of the iDEAL response.
         /// </summary>
         [JsonProperty("payment_details")]
         public new IdealDetailsResponse Details
         {
-            get { return (IdealDetailsResponse) base.Details; }
-            set { base.Details = value; }
+            get => (IdealDetailsResponse) base.Details;
+            set => base.Details = value;
         }
     }
 }

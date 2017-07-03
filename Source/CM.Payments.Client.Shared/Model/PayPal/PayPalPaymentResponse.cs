@@ -4,19 +4,19 @@ using Newtonsoft.Json;
 namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// A PayPal payment.
+    /// Details of the PayPal payment response.
     /// </summary>
     [PublicAPI]
     public sealed class PayPalPaymentResponse : PaymentResponse
     {
         /// <summary>
-        /// Details for the PayPal payment.
+        /// In depth details of the PayPal response.
         /// </summary>
         [JsonProperty("payment_details")]
         public new PayPalDetailsResponse Details
         {
-            get { return (PayPalDetailsResponse) base.Details; }
-            set { base.Details = value; }
+            get => (PayPalDetailsResponse) base.Details;
+            set => base.Details = value;
         }
     }
 }

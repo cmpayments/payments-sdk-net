@@ -15,6 +15,7 @@ Currently the following payment methods are supported:
 - [PayPal](https://www.paypal.com)
 - [SOFORT](https://www.sofort.com)
 - [WireTransfer](https://en.wikipedia.org/wiki/Wire_transfer)
+- Direct debit
 
 ## Installation
 

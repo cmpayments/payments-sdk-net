@@ -1,14 +1,17 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Newtonsoft.Json;
+using System;
 
 namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// Details of a payment.
+    /// Details of the payment request.
     /// </summary>
     public abstract class PaymentRequest
     {
+        /// <summary>
+        /// Payment method used to make the payment.
+        /// </summary>
         [JsonProperty("payment_method")]
         [UsedImplicitly]
         internal abstract string Method { get; }
@@ -26,7 +29,7 @@ namespace CM.Payments.Client.Model
         public DateTime? DueDate { get; set; }
 
         /// <summary>
-        /// 	Currency code in ISO-4217 format.
+        /// Currency code in ISO-4217 format.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }

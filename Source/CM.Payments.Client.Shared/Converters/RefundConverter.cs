@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Linq;
 // ReSharper disable once RedundantUsingDirective
 using System.Reflection;
 
@@ -17,13 +16,10 @@ namespace CM.Payments.Client.Converters
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            var token = JToken.Load(reader);
-            RefundDetailsResponse target;
+            var target = new RefundDetailsResponse();
 
-            if (token.Count() > 1)
-                target = new IdealRefundDetailsResponse();
-            else
-                target = new AfterPayRefundDetailsResponse();
+            var token = JToken.Load(reader);
+            
             serializer.Populate(token.CreateReader(), target);
 
             return target;

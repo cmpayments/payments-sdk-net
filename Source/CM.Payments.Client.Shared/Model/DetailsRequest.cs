@@ -1,10 +1,9 @@
 ﻿namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// Details for a payment.
+    /// Base class for a details request.
     /// </summary>
     public abstract class DetailsRequest
     {
-
     }
 }
