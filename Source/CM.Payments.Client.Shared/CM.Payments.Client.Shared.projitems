@@ -9,6 +9,7 @@
     <Import_RootNamespace>CM.Payments.Client</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DateConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\UtcDateTimeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\PaymentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\RefundConverter.cs" />
@@ -18,7 +19,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\AfterPay\AfterPayPaymentRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\AfterPay\AfterPayPaymentResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\AfterPay\AfterPayRefundDetailsRequest.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\AfterPay\AfterPayRefundDetailsResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\AfterPay\AfterPayVatCategory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Bancontact\BancontactDetailsRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Bancontact\BancontactDetailsResponse.cs" />
@@ -31,13 +31,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\Creditcard\CreditcardPaymentRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Creditcard\CreditcardPaymentResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\DetailsRequest.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\IAuthenticatedResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DirectDebit\DirectDebitDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DirectDebit\DirectDebitDetailsResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DirectDebit\DirectDebitPaymentRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DirectDebit\DirectDebitPaymentResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DirectDebit\DirectDebitRefundDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\IDetailsResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealDetailsRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealDetailsResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealPaymentRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealPaymentResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealRefundDetailsRequest.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealRefundDetailsResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Issuer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\PaymentRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\PaymentResponse.cs" />
@@ -71,6 +75,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Validators\ChargeValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\CreditcardDetailsValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\CreditcardValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\DirectDebitDetailsValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\DirectDebitValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\IdealDetailsValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\IdealValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\PaymentValidator.cs" />

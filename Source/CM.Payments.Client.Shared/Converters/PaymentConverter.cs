@@ -1,8 +1,8 @@
-﻿using System;
-using CM.Payments.Client.Model;
+﻿using CM.Payments.Client.Model;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace CM.Payments.Client.Converters
 {
@@ -15,10 +15,11 @@ namespace CM.Payments.Client.Converters
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, [NotNull] JsonSerializer serializer)
         {
-            var token = JToken.Load(reader);
-            var method = token["payment_method"]?.Value<string>();
-            object target;
+            PaymentResponse target;
 
+            var token = JToken.Load(reader);
+            
+            var method = token["payment_method"]?.Value<string>();
             switch (method)
             {
                 case "iDEAL":
@@ -42,11 +43,15 @@ namespace CM.Payments.Client.Converters
                 case "SOFORT":
                     target = new SofortPaymentResponse();
                     break;
+                case "DirectDebit":
+                    target = new DirectDebitPaymentResponse();
+                    break;
                 default:
                     throw new ArgumentException();
             }
 
             serializer.Populate(token.CreateReader(), target);
+
             return target;
         }
 

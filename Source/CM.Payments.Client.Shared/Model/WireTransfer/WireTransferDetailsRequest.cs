@@ -4,13 +4,13 @@ using Newtonsoft.Json;
 namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// Specific details for a Wire Transfer payment.
+    /// In depth details of the Wire Transfer payment request.
     /// </summary>
     [PublicAPI]
     public class WireTransferDetailsRequest : DetailsRequest
     {
         /// <summary>
-        ///     Unique identifier as reference for the merchant.
+        /// Unique identifier as reference for the merchant.
         /// </summary>
         [JsonProperty("purchase_id")]
         public string PurchaseId { get; set; }

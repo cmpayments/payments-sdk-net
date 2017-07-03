@@ -3,10 +3,10 @@
 namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// In depth details of the iDEAL refund request.
+    /// Interface for a details response.
     /// </summary>
     [PublicAPI]
-    public sealed class IdealRefundDetailsRequest : RefundDetailsRequest
+    public interface IDetailsResponse
     {
     }
 }

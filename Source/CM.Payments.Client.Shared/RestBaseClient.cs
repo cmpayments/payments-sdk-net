@@ -69,14 +69,14 @@ namespace CM.Payments.Client
                     this._auth.GenerateHeader(request.Method.Method, request.RequestUri.AbsoluteUri, requestData));
                 var response = await client.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
-                try
-                {
+                //try
+                //{
                     response.EnsureSuccessStatusCode();
-                }
-                catch (HttpRequestException exc)
-                {
-                    throw new UnhandledRequestException("Unable to process your request.", exc);
-                }
+                //}
+                //catch (HttpRequestException exc)
+                //{
+                //    throw new UnhandledRequestException("Unable to process your request.", exc);
+                //}
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 if (string.IsNullOrWhiteSpace(json))
                 {

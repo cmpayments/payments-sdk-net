@@ -15,7 +15,7 @@
     <copyright>Copyright © 2017</copyright>
 
     <!-- Tags appear in the gallery and can be used for tag searches -->
-    <tags>CM Payments iDEAL SOFORT Visa MasterCard</tags>
+    <tags>CM Payments iDEAL SOFORT Visa MasterCard AfterPay Bancontact WireTransfer DirectDebit QR</tags>
 
     <!-- Dependencies are automatically installed when the package is installed -->
     <dependencies>
