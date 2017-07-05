@@ -1,7 +1,7 @@
 ﻿namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// Details for a refund.
+    /// In depth details of the refund request.
     /// </summary>
     public abstract class RefundDetailsRequest
     {

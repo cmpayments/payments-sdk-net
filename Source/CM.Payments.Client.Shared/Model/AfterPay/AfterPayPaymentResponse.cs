@@ -4,19 +4,19 @@ using Newtonsoft.Json;
 namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// An AfterPay payment.
+    /// Details of the AfterPay payment response.
     /// </summary>
     [PublicAPI]
     public sealed class AfterPayPaymentResponse : PaymentResponse
     {
         /// <summary>
-        /// Details for a AfterPay payment.
+        /// In depth details of the AfterPay payment response.
         /// </summary>
         [JsonProperty("payment_details")]
         public new AfterPayDetailsResponse Details
         {
-            get { return (AfterPayDetailsResponse) base.Details; }
-            set { base.Details = value; }
+            get => (AfterPayDetailsResponse) base.Details;
+            set => base.Details = value;
         }
     }
 }

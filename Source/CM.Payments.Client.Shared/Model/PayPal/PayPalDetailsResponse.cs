@@ -4,13 +4,13 @@ using Newtonsoft.Json;
 namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// Specific details about a PayPal payment.
+    /// In depth details of the PayPal payment response.
     /// </summary>
     [PublicAPI]
-    public sealed class PayPalDetailsResponse : PayPalDetailsRequest, IAuthenticatedResponse
+    public sealed class PayPalDetailsResponse : PayPalDetailsRequest, IDetailsResponse
     {
         /// <summary>
-        /// Transaction costs PayPal charged for transaction.
+        /// Transaction costs PayPal charged for the transaction.
         /// </summary>
         [JsonProperty("fee_amount")]
         public string Amount { get; set; }
@@ -22,7 +22,7 @@ namespace CM.Payments.Client.Model
         public string City { get; set; }
 
         /// <summary>
-        /// Currency in which PayPal charged transaction costs.
+        /// Currency in which PayPal charged the transaction costs.
         /// </summary>
         [JsonProperty("fee_currency")]
         public string Currency { get; set; }
@@ -34,13 +34,13 @@ namespace CM.Payments.Client.Model
         public string Email { get; set; }
 
         /// <summary>
-        /// 	First name of the user who paid the charge.
+        /// First name of the user who paid the charge.
         /// </summary>
         [JsonProperty("payer_first_name")]
         public string Firstname { get; set; }
 
         /// <summary>
-        /// Last name of the user who paid the charge.
+        /// Last name of the user who paid the charge
         /// </summary>
         [JsonProperty("payer_last_name")]
         public string Lastname { get; set; }

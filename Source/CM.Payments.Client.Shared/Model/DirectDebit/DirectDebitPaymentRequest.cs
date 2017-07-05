@@ -6,16 +6,16 @@ using System;
 namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// Details of the wire transfer payment request.
+    /// Details of the direct debit payment request.
     /// </summary>
     [PublicAPI]
-    public sealed class WireTransferPaymentRequest : PaymentRequest
+    public sealed class DirectDebitPaymentRequest : PaymentRequest
     {
         /// <summary>
         /// Contains more in depth information about the Payment.
         /// </summary>
         [JsonProperty("payment_details")]
-        public WireTransferDetailsRequest Details { get; set; }
+        public DirectDebitDetailsRequest Details { get; set; }
 
         /// <summary>
         /// Expiration date of the payment.
@@ -27,6 +27,6 @@ namespace CM.Payments.Client.Model
         /// <summary>
         /// Payment method used to make the payment.
         /// </summary>
-        internal override string Method { get; } = "WireTransfer";
+        internal override string Method { get; } = "DirectDebit";
     }
 }

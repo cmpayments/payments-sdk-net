@@ -4,19 +4,19 @@ using Newtonsoft.Json;
 namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// Specific details for a SOFORT payment.
+    /// In depth details of the SOFORT payment response.
     /// </summary>
     [PublicAPI]
-    public sealed class SofortDetailsResponse : SofortDetailsRequest, IAuthenticatedResponse
+    public sealed class SofortDetailsResponse : SofortDetailsRequest, IDetailsResponse
     {
         /// <summary>
-        /// Description of the transaction.
+        /// Unique identifier of the transaction.
         /// </summary>
         [JsonProperty("transaction_id")]
         public string TransactionId { get; set; }
 
         /// <summary>
-        /// URL to where an end-user can execute the payment.
+        /// URL to where the end-user can execute the payment.
         /// </summary>
         [JsonProperty("authentication_url")]
         public string AuthenticationUrl { get; set; }

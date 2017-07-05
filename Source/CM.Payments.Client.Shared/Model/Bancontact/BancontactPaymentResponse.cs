@@ -4,19 +4,19 @@ using Newtonsoft.Json;
 namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// A Bancontact payment.
+    /// Details of the Bancontact payment response.
     /// </summary>
     [PublicAPI]
     public sealed class BancontactPaymentResponse : PaymentResponse
     {
         /// <summary>
-        /// The details for a Bancontact payment.
+        /// In depth details of the Bancontact response.
         /// </summary>
         [JsonProperty("payment_details")]
         public new BancontactDetailsResponse Details
         {
-            get { return (BancontactDetailsResponse) base.Details; }
-            set { base.Details = value; }
+            get => (BancontactDetailsResponse) base.Details;
+            set => base.Details = value;
         }
     }
 }

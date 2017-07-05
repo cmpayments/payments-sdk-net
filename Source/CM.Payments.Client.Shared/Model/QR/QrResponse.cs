@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// Contains details for a QR payment when it is received from the server.
+    /// Details of the QR payment response.
     /// </summary>
     [PublicAPI]
     public sealed class QrResponse
@@ -29,7 +29,7 @@ namespace CM.Payments.Client.Model
         public string Beneficiary { get; set; }
 
         /// <summary>
-        /// Date of creation.
+        /// Date and time the QR payment is created.
         /// </summary>
         [JsonProperty("created_at")]
         public DateTime? CreatedAt { get; set; }
@@ -59,37 +59,37 @@ namespace CM.Payments.Client.Model
         public object Payments { get; set; }
 
         /// <summary>
-        /// Unique alphanumeric string that serves as a reference for the merchant.
+        /// Unique identifier used as reference for the merchant.
         /// </summary>
         [JsonProperty("purchase_id")]
         public string PurchaseId { get; set; }
 
         /// <summary>
-        /// URL to the QR code.
+        /// URL to the QR image.
         /// </summary>
         [JsonProperty("qr_code_url")]
         public string QrCodeUrl { get; set; }
 
         /// <summary>
-        /// Unique identifier for the QR code.
+        /// Unique identifier of the QR payment.
         /// </summary>
         [JsonProperty("qr_id")]
         public string QrId { get; set; }
 
         /// <summary>
-        /// Pixel width and height of the QR image.
+        /// Pixel width and height if the QR image.
         /// </summary>
         [JsonProperty("size")]
         public int Size { get; set; }
 
         /// <summary>
-        /// THe status of the QR payment. Can be: Uninitialized, Open, Success, Failure, Expired, Cancelled
+        /// Status of the QR payment.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// 	Last update date of the QR code.
+        /// Date and time the QR payment is updated.
         /// </summary>
         [JsonProperty("updated_at")]
         public DateTime? UpdatedAt { get; set; }

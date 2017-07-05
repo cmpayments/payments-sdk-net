@@ -4,19 +4,19 @@ using Newtonsoft.Json;
 namespace CM.Payments.Client.Model
 {
     /// <summary>
-    /// A SOFORT payment.
+    /// Details of the Sofort payment response.
     /// </summary>
     [PublicAPI]
     public sealed class SofortPaymentResponse : PaymentResponse
     {
         /// <summary>
-        /// Details for a SOFORT payment.
+        /// In depth details of the Sofort response.
         /// </summary>
         [JsonProperty("payment_details")]
         public new SofortDetailsResponse Details
         {
-            get { return (SofortDetailsResponse) base.Details; }
-            set { base.Details = value; }
+            get => (SofortDetailsResponse) base.Details;
+            set => base.Details = value;
         }
     }
 }
