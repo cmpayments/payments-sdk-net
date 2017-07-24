@@ -69,6 +69,18 @@ namespace CM.Payments.Client.Model
         public string PaymentId { get; set; }
 
         /// <summary>
+        /// Whether the payment is a recurring payment, or not.
+        /// </summary>
+        [JsonProperty("recurring")]
+        public bool Recurring { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the recurring payment.
+        /// </summary>
+        [JsonProperty("recurring_id")]
+        public string RecurringId { get; set; }
+
+        /// <summary>
         /// Short unique identifier of the payment object.
         /// </summary>
         [JsonProperty("short_payment_id")]
