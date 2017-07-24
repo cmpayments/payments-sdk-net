@@ -26,7 +26,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.6\CM.Payments.Client.Core.xml</DocumentationFile>
+    <DocumentationFile>bin\Any CPU\Release\netstandard1.6\CM.Payments.Client.Core.xml</DocumentationFile>
+    <OutputPath>bin\Any CPU\Release\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

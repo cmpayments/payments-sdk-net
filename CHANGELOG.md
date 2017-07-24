@@ -23,3 +23,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.1.4] - 2017-07-24
 - Added missing properties for the direct debit payment response.
 - Added missing properties for the payment response.
+
+## [1.1.5] - 2017-07-24
+- Altered build configurations for dotnet core project to be compatible with AppVeyor.
