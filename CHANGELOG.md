@@ -19,3 +19,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.1.3] - 2017-07-07
 - Altered UTC DateTime conversion to match format "2017-07-07T12:00:00Z"
+
+## [1.1.4] - 2017-07-24
+- Added missing properties for the direct debit payment response.
+- Added missing properties for the payment response.
+
+## [1.1.5] - 2017-07-24
+- Altered build configurations for dotnet core project to be compatible with AppVeyor.
