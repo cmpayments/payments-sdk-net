@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using CM.Payments.Client.Model;
+﻿using CM.Payments.Client.Model;
+using CM.Payments.Client.Validators;
 using FluentValidation;
 using FluentValidation.TestHelper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CM.Payments.Client.Validators;
+using System;
+using System.Collections.Generic;
 
 namespace CM.Payments.Client.Test
 {
