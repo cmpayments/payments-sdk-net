@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using Newtonsoft.Json;
+using System;
 
 namespace CM.Payments.Client.Model
 {
@@ -9,6 +10,24 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class DirectDebitDetailsResponse : DirectDebitDetailsRequest, IDetailsResponse
     {
+        /// <summary>
+        /// Date and time at which the transaction is reversed.
+        /// </summary>
+        [JsonProperty("reversed_on")]
+        public DateTime ReversedOn { get; set; }
+
+        /// <summary>
+        /// SEPA return reason code of the reversed transaction.
+        /// </summary>
+        [JsonProperty("reverse_reason_code")]
+        public string ReverseReasonCode { get; set; }
+
+        /// <summary>
+        /// Description of the SEPA return reason code.
+        /// </summary>
+        [JsonProperty("reverse_reason_description")]
+        public string ReverseReasonDescription { get; set; }
+
         /// <summary>
         /// Unique identifier of the bank transaction.
         /// </summary>
