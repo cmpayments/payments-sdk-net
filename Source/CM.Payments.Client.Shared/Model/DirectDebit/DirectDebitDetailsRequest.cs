@@ -41,12 +41,6 @@ namespace CM.Payments.Client.Model
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
-        
-        /// <summary>
-        /// Unique identifier as reference for the merchant.
-        /// </summary>
-        [JsonProperty("purchase_id")]
-        public string PurchaseId { get; set; }
 
         /// <summary>
         /// Optional description that will be shown on the end user their bank statement.

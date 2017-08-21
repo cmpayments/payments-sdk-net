@@ -26,3 +26,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.1.5] - 2017-07-24
 - Altered build configurations for dotnet core project to be compatible with AppVeyor.
+
+## [1.1.5] - 2017-08-21
+- Add: Added missing Recurring property in credit card details
+- Change: Return actual PSP error response instead of default static message
+- Change: Moved URL properties to base request details
