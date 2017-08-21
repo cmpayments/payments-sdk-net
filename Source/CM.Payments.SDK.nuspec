@@ -40,8 +40,8 @@
   </metadata>
 
   <files>
-    <file src="CM.Payments.Client.Core\bin\$configuration$\netstandard1.6\CM.Payments.Client.*" target="lib\netcore\" />
-    <file src="CM.Payments.Client.Net45\bin\$configuration$\CM.Payments.Client.*" target="lib\net45\" />
-    <file src="CM.Payments.Client.Net40\bin\$configuration$\CM.Payments.Client.*" target="lib\net40\" />
+    <file src="CM.Payments.Client.Core\bin\Release\netstandard1.6\CM.Payments.Client.*" target="lib\netcore\" />
+    <file src="CM.Payments.Client.Net45\bin\Release\CM.Payments.Client.*" target="lib\net45\" />
+    <file src="CM.Payments.Client.Net40\bin\Release\CM.Payments.Client.*" target="lib\net40\" />
   </files>
 </package>
