@@ -12,6 +12,7 @@ namespace CM.Payments.Client.Validators
             this.RuleFor(d => d.BankAccountNumber).NotNull().Must(BeAValidIban);
             this.RuleFor(d => d.Name).NotNull();
             this.RuleFor(d => d.MandateId).NotNull().Length(1, 35);
+            this.RuleFor(d => d.PurchaseId).NotNull().Length(1, 35);
         }
 
         private static bool BeAValidIban([NotNull] string iban)
