@@ -36,7 +36,8 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="6.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.1.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.0" />
   </ItemGroup>
 
   <Import Project="..\CM.Payments.Client.Shared\CM.Payments.Client.Shared.projitems" Label="Shared" />
