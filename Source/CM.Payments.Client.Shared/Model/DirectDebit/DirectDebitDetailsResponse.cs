@@ -11,6 +11,12 @@ namespace CM.Payments.Client.Model
     public sealed class DirectDebitDetailsResponse : DirectDebitDetailsRequest, IDetailsResponse
     {
         /// <summary>
+        /// URL to where an end-user can execute the payment.
+        /// </summary>
+        [JsonProperty("authentication_url")]
+        public string AuthenticationUrl { get; set; }
+
+        /// <summary>
         /// Date and time at which the transaction is reversed.
         /// </summary>
         [JsonProperty("reversed_on")]

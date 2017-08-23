@@ -10,6 +10,12 @@ namespace CM.Payments.Client.Model
     public sealed class AfterPayDetailsResponse : AfterPayDetailsRequest, IDetailsResponse
     {
         /// <summary>
+        /// URL to where an end-user can execute the payment.
+        /// </summary>
+        [JsonProperty("authentication_url")]
+        public string AuthenticationUrl { get; set; }
+
+        /// <summary>
         /// Details of the result within the AfterPay payment response.
         /// </summary>
         [JsonProperty("result")]
