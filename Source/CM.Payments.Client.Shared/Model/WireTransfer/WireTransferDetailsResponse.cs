@@ -10,6 +10,12 @@ namespace CM.Payments.Client.Model
     public sealed class WireTransferDetailsResponse : WireTransferDetailsRequest, IDetailsResponse
     {
         /// <summary>
+        /// URL to where an end-user can execute the payment.
+        /// </summary>
+        [JsonProperty("authentication_url")]
+        public string AuthenticationUrl { get; set; }
+
+        /// <summary>
         /// Unique identification code of the financial institution linked to the IBAN.
         /// </summary>
         [JsonProperty("beneficiary_bic")]
