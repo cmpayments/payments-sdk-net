@@ -16,10 +16,11 @@ namespace CM.Payments.Client
         private const string JsonMediaType = "application/json";
         private static readonly Encoding Encoding = Encoding.UTF8;
         private readonly OAuth _auth;
-        private readonly Uri _baseUri = new Uri("https://api.cmpayments.com/");
+        private readonly Uri _baseUri;
 
-        internal RestBaseClient(string consumerKey, string consumerSecret)
+        internal RestBaseClient(string consumerKey, string consumerSecret, Uri baseUri = null)
         {
+            this._baseUri = baseUri ?? new Uri("https://api.cmpayments.com/");
             this._auth = new OAuth(consumerKey, consumerSecret);
         }
 
