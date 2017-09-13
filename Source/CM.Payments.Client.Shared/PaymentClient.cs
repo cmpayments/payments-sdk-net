@@ -24,7 +24,8 @@ namespace CM.Payments.Client
         /// </summary>
         /// <param name="consumerKey">The consumer key.</param>
         /// <param name="consumerSecret">The consumer secret.</param>
-        public PaymentClient(string consumerKey, string consumerSecret) : base(consumerKey, consumerSecret)
+        /// <param name="baseUri">Optional client base uri. If no uri is provided, the default uri will be used.</param>
+        public PaymentClient(string consumerKey, string consumerSecret, Uri baseUri = null) : base(consumerKey, consumerSecret, baseUri)
         {
             this._chargeValidator = new ChargeValidator();
             this._qrValidator = new QrValidator();
