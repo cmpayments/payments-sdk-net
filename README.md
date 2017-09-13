@@ -15,6 +15,7 @@ Currently the following payment methods are supported:
 - [PayPal](https://www.paypal.com)
 - [SOFORT](https://www.sofort.com)
 - [WireTransfer](https://en.wikipedia.org/wiki/Wire_transfer)
+- Direct debit
 
 ## Installation
 
@@ -37,7 +38,7 @@ Bugs and feature request are tracked on [GitHub](https://github.com/cmpayments/i
 
 The cmpayment/payments-sdk-net library is copyright (C) [CM Payments](https://cmpayments.com/) and licensed for use under the MIT License (MIT). Please see [LICENSE][] for more information.
 
-[badge-build]: https://img.shields.io/appveyor/ci/cmpayments/payments-sdk-net.svg?style=flat-square
+[badge-build]: https://img.shields.io/appveyor/ci/cm-payments/payments-sdk-net.svg?style=flat-square
 [build]: https://ci.appveyor.com/project/cmpayments/payments-sdk-net
 
 [badge-nuget]: 	https://img.shields.io/nuget/v/CM.Payments.SDK.svg

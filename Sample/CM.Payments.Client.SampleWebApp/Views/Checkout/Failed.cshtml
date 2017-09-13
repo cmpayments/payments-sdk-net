@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Failed";
+}
+
+<div class="alert alert-danger" id="message" role="alert">
+    @if (Session["Details"] != null)
+    {
+        <strong>Oops!</strong>
+        <span> Seems like the payment has failed.</span>
+        <a href="@Url.Action("Index", "Checkout")" class="alert-link">Try again</a>
+    }
+</div>

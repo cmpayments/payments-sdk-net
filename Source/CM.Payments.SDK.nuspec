@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>CM.Payments.SDK</id>
+    <version>$version$</version>
+    <authors>CM Payments b.v.</authors>
+    <owners>CM Payments b.v.</owners>
+    <!-- <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl> -->
+    <!-- <projectUrl>http://github.com/contoso/UsefulStuff</projectUrl> -->
+    <!-- <iconUrl>http://github.com/contoso/UsefulStuff/nuget_icon.png</iconUrl> -->
+    <!-- <requireLicenseAcceptance>false</requireLicenseAcceptance> -->
+    <releaseNotes></releaseNotes>
+    <description>CM Payments Software Development Kit</description>
+    <copyright>Copyright © 2017</copyright>
+
+    <!-- Tags appear in the gallery and can be used for tag searches -->
+    <tags>CM Payments iDEAL SOFORT Visa MasterCard AfterPay Bancontact WireTransfer DirectDebit QR</tags>
+
+    <!-- Dependencies are automatically installed when the package is installed -->
+    <dependencies>
+      <group targetFramework="net45">
+        <dependency id="FluentValidation" version="6.4.0" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
+      </group>
+      <group targetFramework="netcore">
+        <dependency id="FluentValidation" version="6.4.0" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="System.Reflection.TypeExtensions" version="4.1.0" />
+      </group>
+      <group targetFramework="net40">
+        <dependency id="FluentValidation" version="6.4.0" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="Microsoft.Bcl" version="1.1.10" />
+        <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
+        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
+        <dependency id="Microsoft.Net.Http" version="2.2.29" />
+      </group>
+    </dependencies>
+  </metadata>
+
+  <files>
+    <file src="CM.Payments.Client.Core\bin\$configuration$\netstandard1.6\CM.Payments.Client.*" target="lib\netcore\" />
+    <file src="CM.Payments.Client.Net45\bin\$configuration$\CM.Payments.Client.*" target="lib\net45\" />
+    <file src="CM.Payments.Client.Net40\bin\$configuration$\CM.Payments.Client.*" target="lib\net40\" />
+  </files>
+</package>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>8d854de8-54f4-4dad-b05f-21acbe4a1dfb</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>CM.Payments.Client</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DateConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\UtcDateTimeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\PaymentConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\RefundConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JetBrains.Annotations\JetBrains.Annotations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\AfterPay\AfterPayDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\AfterPay\AfterPayDetailsResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\AfterPay\AfterPayPaymentRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\AfterPay\AfterPayPaymentResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\AfterPay\AfterPayRefundDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\AfterPay\AfterPayVatCategory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Bancontact\BancontactDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Bancontact\BancontactDetailsResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Bancontact\BancontactPaymentRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Bancontact\BancontactPaymentResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ChargeRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\ChargeResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Creditcard\CreditcardDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Creditcard\CreditcardDetailsResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Creditcard\CreditcardPaymentRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Creditcard\CreditcardPaymentResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DirectDebit\DirectDebitDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DirectDebit\DirectDebitDetailsResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DirectDebit\DirectDebitPaymentRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DirectDebit\DirectDebitPaymentResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DirectDebit\DirectDebitRefundDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\IDetailsResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealDetailsResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealPaymentRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealPaymentResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealRefundDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Issuer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PaymentRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PaymentResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PayPal\PayPalDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PayPal\PayPalDetailsResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PayPal\PayPalPaymentRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PayPal\PayPalPaymentResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Qr\QrRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Qr\QrResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Refund\RefundRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Refund\RefundDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Refund\RefundDetailsResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Refund\RefundResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Sofort\SofortDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Sofort\SofortDetailsResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Sofort\SofortPaymentRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Sofort\SofortPaymentResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\WireTransfer\WireTransferDetailsRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\WireTransfer\WireTransferDetailsResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\WireTransfer\WireTransferPaymentRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\WireTransfer\WireTransferPaymentResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OAuth.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PaymentClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RestBaseClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UnhandledRequestException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\AfterPayDetailsValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\AfterPayValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\BancontactDetailsValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\BancontactValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\ChargeValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\CreditcardDetailsValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\CreditcardValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\DirectDebitDetailsValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\DirectDebitValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\IdealDetailsValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\IdealValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\PaymentValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\PaymentValidatorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\PayPalDetailsValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\PayPalValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\QrValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\RefundValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\SofortDetailsValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\SofortValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\WireTransferDetailsValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\WireTransferValidator.cs" />
+  </ItemGroup>
+</Project>

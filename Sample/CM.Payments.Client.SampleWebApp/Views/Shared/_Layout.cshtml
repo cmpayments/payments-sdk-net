@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Sample Webshop</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", false)
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top cm-pfh-nav">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <img width="135" alt="Brand" src="@Url.Content("~/Content/images/cmpayments-logo.png")">
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav"></ul>
+            <ul class="nav navbar-nav navbar-right">
+                @if (Session["User"] != null)
+                {
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <a href="@Url.Action("Index", "Home")">Products</a>
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Cart" ? "active" : "")">
+                        <a href="@Url.Action("Cart", "Home")"><span class="glyphicon glyphicon-shopping-cart"></span> My Cart <span id="cart-amount" class="badge">@Session["Amount"]</span></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            @Session["Username"]<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="@Url.Action("Logout", "Home")"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="active">
+                        <a href="@Url.Action("Login", "Home")"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container content">
+    @RenderBody()
+</div>
+</body>
+</html>

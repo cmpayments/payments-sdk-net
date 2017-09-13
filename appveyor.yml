@@ -1,0 +1,31 @@
+version: 1.1.9.{build}
+image: Visual Studio 2017
+configuration: Release
+assembly_info:
+  patch: true
+  file: Source\**\AssemblyInfo.*
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+before_build:
+- ps: pushd Source
+- nuget restore
+- ps: popd
+build:
+  project: Source\CM.Payments.SDK.sln
+  publish_nuget: true
+  publish_nuget_symbols: true
+  verbosity: minimal
+before_package:
+- ps: pushd Source
+- nuget pack CM.Payments.SDK.nuspec -Symbols -Properties configuration=%CONFIGURATION%;version=%APPVEYOR_BUILD_VERSION% -OutputDirectory ..\Dist
+- ps: popd
+artifacts:
+- path: Dist\*
+  name: Nuget
+deploy:
+  provider: NuGet
+  api_key:
+    secure: SsJ7w99Uz4WrB+qlOX3VjU6UMjXbiRFdNI3H9tGaAL+7r7tKZVcBlNNxjq5IFc3E #  https://ci.appveyor.com/tools/encrypt
+  skip_symbols: true
+  artifact: /.*\.nupkg/
