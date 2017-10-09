@@ -34,3 +34,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.1.7] - 2017-08-21
 - Restore output path to default for CM.Payments.Client.Core project
+
+## [1.1.8] - 2017-08-24
+- Added authentication URL in response details interface for generic use
+
+## [1.1.9] - 2017-09-13
+- Changed hardcoded client base uri to optional constructor parameter.
