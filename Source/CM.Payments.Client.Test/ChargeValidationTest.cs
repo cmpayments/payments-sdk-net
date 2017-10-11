@@ -1,7 +1,6 @@
 ﻿using CM.Payments.Client.Model;
 using CM.Payments.Client.Validators;
 using FluentValidation;
-using FluentValidation.TestHelper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -11,22 +10,18 @@ namespace CM.Payments.Client.Test
     [TestClass]
     public class ChargeValidationTest
     {
-        private readonly ChargeValidator _validate = new ChargeValidator();
-
         [TestMethod]
         [ExpectedException(typeof(ValidationException))]
-        public void Validate_WithError()
+        public void Validate_WithoutAmount()
         {
             //Arrange
             var charge = new ChargeRequest
             {
-                Amount = 20.5,
-                Currency = "EU",
-                Payments = new List<PaymentRequest>()
+                Currency = "EUR",
+                Payments = new List<PaymentRequest>
                 {
                     new IdealPaymentRequest()
                     {
-                        Amount = 20.5,
                         Currency = "EUR",
                         Details = new IdealDetailsRequest()
                         {
@@ -43,13 +38,24 @@ namespace CM.Payments.Client.Test
             };
 
             //Act
-            _validate.ValidateAndThrow(charge);
+            new ChargeValidator().ValidateAndThrow(charge);
         }
 
+
         [TestMethod]
-        public void Validate_WithoutError()
+        [ExpectedException(typeof(ValidationException))]
+        public void Validate_WithoutPayments()
         {
-            _validate.ShouldNotHaveValidationErrorFor(c => c.Currency, "EUR");
+            //Arrange
+            var charge = new ChargeRequest
+            {
+                Amount = 20.5,
+                Currency = "EUR",
+                Payments = new List<PaymentRequest>()
+            };
+
+            //Act
+            new ChargeValidator().ValidateAndThrow(charge);
         }
     }
 }
