@@ -12,6 +12,12 @@ namespace CM.Payments.Client.Converters
         {
             return true;
         }
+		
+		public override bool CanWrite => false;
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, [NotNull] JsonSerializer serializer)
         {
@@ -53,11 +59,6 @@ namespace CM.Payments.Client.Converters
             serializer.Populate(token.CreateReader(), target);
 
             return target;
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotSupportedException();
         }
     }
 }
