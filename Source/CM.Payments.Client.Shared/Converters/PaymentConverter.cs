@@ -60,10 +60,5 @@ namespace CM.Payments.Client.Converters
 
             return target;
         }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotSupportedException();
-        }
     }
 }

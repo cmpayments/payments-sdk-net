@@ -44,3 +44,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.1.10] - 2017-09-13
 - Removed charge validation rule to check the usage of WireTransfer.
 - Removed charge validation rule to check currency.
+
+## [1.1.11] - 2018-04-03
+- Added CanWrite => false to PaymentConverter to make sure the default json converter is used instead.
