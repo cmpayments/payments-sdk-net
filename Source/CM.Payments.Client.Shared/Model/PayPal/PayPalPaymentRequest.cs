@@ -9,15 +9,12 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class PayPalPaymentRequest : PaymentRequest
     {
+        internal override PaymentMethod Method { get; } = PaymentMethod.PayPal;
+
         /// <summary>
         /// Contains more in depth information about the Payment.
         /// </summary>
         [JsonProperty("payment_details")]
-        public PayPalDetailsRequest Details { get; set; }
-
-        /// <summary>
-        /// Payment method used to make the payment.
-        /// </summary>
-        internal override string Method { get; } = "PayPal";
+        public PayPalDetailsRequest Details { get; set; }        
     }
 }

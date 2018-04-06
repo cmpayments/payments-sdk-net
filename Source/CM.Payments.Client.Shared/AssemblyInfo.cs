@@ -18,3 +18,4 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyFileVersion("1.1.11.0")]
 
 [assembly: InternalsVisibleTo("CM.Payments.Client.Test")]
+[assembly: InternalsVisibleTo("CM.Payments.Client.Test.40")]

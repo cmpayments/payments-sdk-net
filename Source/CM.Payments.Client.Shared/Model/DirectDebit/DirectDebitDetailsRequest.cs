@@ -32,8 +32,7 @@ namespace CM.Payments.Client.Model
         /// <summary>
         /// Date at which the mandate was obtained.
         /// </summary>
-        [JsonProperty("mandate_start_date")]
-        [JsonConverter(typeof(DateConverter))]
+        [JsonProperty("mandate_start_date"), JsonConverter(typeof(DateConverter))]
         public DateTime MandateStartDate { get; set; }
 
         /// <summary>

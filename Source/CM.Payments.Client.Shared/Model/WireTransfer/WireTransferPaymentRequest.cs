@@ -11,6 +11,8 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class WireTransferPaymentRequest : PaymentRequest
     {
+        internal override PaymentMethod Method { get; } = PaymentMethod.WireTransfer;
+
         /// <summary>
         /// Contains more in depth information about the Payment.
         /// </summary>
@@ -20,13 +22,7 @@ namespace CM.Payments.Client.Model
         /// <summary>
         /// Expiration date of the payment.
         /// </summary>
-        [JsonProperty("expires_at")]
-        [JsonConverter(typeof(UtcDateTimeConverter))]
-        public DateTime ExpiredAt { get; set; }
-
-        /// <summary>
-        /// Payment method used to make the payment.
-        /// </summary>
-        internal override string Method { get; } = "WireTransfer";
+        [JsonProperty("expires_at"), JsonConverter(typeof(UtcDateTimeConverter))]
+        public DateTime ExpiredAt { get; set; }        
     }
 }

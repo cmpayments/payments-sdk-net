@@ -5,19 +5,14 @@ using System.Text.RegularExpressions;
 
 namespace CM.Payments.Client.Validators
 {
-    internal sealed class DirectDebitDetailsValidator : AbstractValidator<DirectDebitDetailsRequest>
+    internal sealed class DirectDebitDetailsValidator : BaseValidator<DirectDebitDetailsRequest>
     {
         public DirectDebitDetailsValidator()
         {
-            this.RuleFor(d => d.BankAccountNumber).NotNull().Must(BeAValidIban);
-            this.RuleFor(d => d.Name).NotNull();
-            this.RuleFor(d => d.MandateId).NotNull().Length(1, 35);
-            this.RuleFor(d => d.PurchaseId).NotNull().Length(1, 35);
-        }
-
-        private static bool BeAValidIban([NotNull] string iban)
-        {
-            return Regex.IsMatch(iban, @"^[A-Z]{2}[0-9]{2}[A-Z]{4}[0-9]{10}$");
+            RuleFor(d => d.BankAccountNumber).NotNull().Must(BeAValidIban);
+            RuleFor(d => d.Name).NotNull();
+            RuleFor(d => d.MandateId).NotNull().Length(1, 35);
+            RuleFor(d => d.PurchaseId).NotNull().Length(1, 35);
         }
     }
 }

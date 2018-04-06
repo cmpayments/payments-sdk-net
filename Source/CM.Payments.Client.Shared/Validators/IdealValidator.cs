@@ -3,11 +3,12 @@ using FluentValidation;
 
 namespace CM.Payments.Client.Validators
 {
-    internal sealed class IdealValidator : AbstractValidator<IdealPaymentRequest>
+    internal sealed class IdealValidator : BaseValidator<IdealPaymentRequest>
     {
         public IdealValidator()
         {
-            this.RuleFor(p => p.Details).SetValidator(new IdealDetailsValidator());
+            RuleFor(p => p.Currency).NotNull().Must(BeAValidCurrency).WithMessage($"'{nameof(IdealPaymentRequest.Currency)}' must be in the right ISO format.");
+            RuleFor(p => p.Details).SetValidator(new IdealDetailsValidator());
         }
     }
 }

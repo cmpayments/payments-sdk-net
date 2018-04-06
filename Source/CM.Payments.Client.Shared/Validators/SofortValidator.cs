@@ -3,11 +3,12 @@ using FluentValidation;
 
 namespace CM.Payments.Client.Validators
 {
-    internal sealed class SofortValidator : AbstractValidator<SofortPaymentRequest>
+    internal sealed class SofortValidator : BaseValidator<SofortPaymentRequest>
     {
         public SofortValidator()
         {
-            this.RuleFor(p => p.Details).SetValidator(new SofortDetailsValidator());
+            RuleFor(p => p.Currency).NotNull().Must(BeAValidCurrency).WithMessage($"'{nameof(SofortPaymentRequest.Currency)}' must be in the right ISO format.");
+            RuleFor(p => p.Details).SetValidator(new SofortDetailsValidator());
         }
     }
 }

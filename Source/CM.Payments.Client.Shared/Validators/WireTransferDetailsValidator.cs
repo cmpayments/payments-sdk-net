@@ -3,11 +3,11 @@ using FluentValidation;
 
 namespace CM.Payments.Client.Validators
 {
-    internal sealed class WireTransferDetailsValidator : AbstractValidator<WireTransferDetailsRequest>
+    internal sealed class WireTransferDetailsValidator : BaseValidator<WireTransferDetailsRequest>
     {
         public WireTransferDetailsValidator()
         {
-            this.RuleFor(r => r.PurchaseId).NotEmpty().Length(1, 35);
+            RuleFor(r => r.PurchaseId).NotEmpty().Length(1, 35);
         }
     }
 }

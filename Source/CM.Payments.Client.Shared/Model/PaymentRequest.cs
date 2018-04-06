@@ -1,20 +1,21 @@
 ﻿using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
+using CM.Payments.Client.Converters;
 
 namespace CM.Payments.Client.Model
 {
     /// <summary>
     /// Details of the payment request.
     /// </summary>
+    [JsonConverter(typeof(PaymentRequestConverter))]
     public abstract class PaymentRequest
     {
         /// <summary>
         /// Payment method used to make the payment.
         /// </summary>
-        [JsonProperty("payment_method")]
-        [UsedImplicitly]
-        internal abstract string Method { get; }
+        [UsedImplicitly, JsonProperty("payment_method")]
+        internal abstract PaymentMethod Method { get; }
 
         /// <summary>
         /// Amount of the payment.

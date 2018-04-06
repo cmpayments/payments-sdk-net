@@ -20,37 +20,32 @@ namespace CM.Payments.Client
 
         internal RestBaseClient(string consumerKey, string consumerSecret, Uri baseUri = null)
         {
-            this._baseUri = baseUri ?? new Uri("https://api.cmpayments.com/");
-            this._auth = new OAuth(consumerKey, consumerSecret);
+            _baseUri = baseUri ?? new Uri("https://api.cmpayments.com/");
+            _auth = new OAuth(consumerKey, consumerSecret);
         }
 
         internal async Task<T> GetAsync<T>(string url, CancellationToken cancellationToken = default(CancellationToken))
         {
-            using (var client = this.BuildClient())
+            using (var client = BuildClient())
             {
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(JsonMediaType));
                 var request = new HttpRequestMessage(HttpMethod.Get, client.BaseAddress + url);
                 request.Headers.Authorization = new AuthenticationHeaderValue(
                     "OAuth",
-                    this._auth.GenerateHeader(request.Method.Method, request.RequestUri.AbsoluteUri));
+                    _auth.GenerateHeader(request.Method.Method, request.RequestUri.AbsoluteUri));
                 var response = await client.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();
 
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                if (string.IsNullOrWhiteSpace(json))
-                {
-                    return default(T);
-                }
-                var result = JsonConvert.DeserializeObject<T>(json);
-                return result;
+                return string.IsNullOrWhiteSpace(json) ? default(T) : JsonConvert.DeserializeObject<T>(json);
             }
         }
 
         internal async Task<T> PostAsync<T>(string url, object data, CancellationToken cancellationToken = default(CancellationToken))
         {
-            using (var client = this.BuildClient())
+            using (var client = BuildClient())
             {
                 var settings = new JsonSerializerSettings
                 {
@@ -68,7 +63,7 @@ namespace CM.Payments.Client
                 };
                 request.Headers.Authorization = new AuthenticationHeaderValue(
                     "OAuth",
-                    this._auth.GenerateHeader(request.Method.Method, request.RequestUri.AbsoluteUri, requestData)
+                    _auth.GenerateHeader(request.Method.Method, request.RequestUri.AbsoluteUri, requestData)
                 );
                 
                 string json = null;
@@ -107,7 +102,7 @@ namespace CM.Payments.Client
 
         private HttpClient BuildClient()
         {
-            return new HttpClient {BaseAddress = this._baseUri};
+            return new HttpClient {BaseAddress = _baseUri};
         }
     }
 }

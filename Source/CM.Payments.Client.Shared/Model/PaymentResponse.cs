@@ -1,6 +1,7 @@
 ﻿using CM.Payments.Client.Converters;
 using Newtonsoft.Json;
 using System;
+using JetBrains.Annotations;
 
 namespace CM.Payments.Client.Model
 {
@@ -10,10 +11,6 @@ namespace CM.Payments.Client.Model
     [JsonConverter(typeof(PaymentConverter))]
     public abstract class PaymentResponse
     {
-        internal PaymentResponse()
-        {
-        }
-
         /// <summary>
         /// Amount of the payment.
         /// </summary>
@@ -59,8 +56,8 @@ namespace CM.Payments.Client.Model
         /// <summary>
         /// Payment method used to make the payment.
         /// </summary>
-        [JsonProperty("payment_method")]
-        public string Method { get; set; }
+        [UsedImplicitly, JsonProperty("payment_method")]
+        internal abstract PaymentMethod Method { get; }
 
         /// <summary>
         /// Unique identifier of the payment object.

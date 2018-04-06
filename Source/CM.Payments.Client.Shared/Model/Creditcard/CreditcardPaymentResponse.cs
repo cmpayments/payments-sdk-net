@@ -9,6 +9,8 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class CreditcardPaymentResponse : PaymentResponse
     {
+        internal override PaymentMethod Method => PaymentMethod.Creditcard;
+
         /// <summary>
         /// In depth details of the credit card response.
         /// </summary>

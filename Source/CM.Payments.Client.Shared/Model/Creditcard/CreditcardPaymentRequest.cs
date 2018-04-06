@@ -24,6 +24,6 @@ namespace CM.Payments.Client.Model
         /// <summary>
         /// Payment method used to make the payment.
         /// </summary>
-        internal override string Method { get; } = "Creditcard";
+        internal override PaymentMethod Method { get; } = PaymentMethod.Creditcard;
     }
 }

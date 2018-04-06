@@ -11,22 +11,19 @@ namespace CM.Payments.Client.Model
         /// <summary>
         /// Total amount to be paid for the charge.
         /// </summary>
-        [JsonProperty("amount")]
-        [JsonRequired]
+        [JsonProperty("amount"), JsonRequired]
         public double Amount { get; set; }
 
         /// <summary>
         /// Currency code in ISO-4217 format.
         /// </summary>
-        [JsonProperty("currency")]
-        [JsonRequired]
+        [JsonProperty("currency"), JsonRequired]
         public string Currency { get; set; }
 
         /// <summary>
         /// List of payments.
         /// </summary>
-        [JsonProperty("payments")]
-        [JsonRequired]
+        [JsonProperty("payments"), JsonRequired]
         public IEnumerable<PaymentRequest> Payments { get; set; }
     }
 }

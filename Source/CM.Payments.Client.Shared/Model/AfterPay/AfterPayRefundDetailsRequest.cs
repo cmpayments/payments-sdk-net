@@ -9,6 +9,8 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public class AfterPayRefundDetailsRequest : RefundDetailsRequest
     {
+        internal override PaymentMethod Method => PaymentMethod.AfterPay;
+
         /// <summary>
         /// Invoice number for the refund.
         /// </summary>

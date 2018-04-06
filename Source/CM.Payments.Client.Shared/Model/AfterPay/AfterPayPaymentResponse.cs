@@ -9,6 +9,8 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class AfterPayPaymentResponse : PaymentResponse
     {
+        internal override PaymentMethod Method { get; } = PaymentMethod.AfterPay;
+
         /// <summary>
         /// In depth details of the AfterPay payment response.
         /// </summary>
@@ -17,6 +19,6 @@ namespace CM.Payments.Client.Model
         {
             get => (AfterPayDetailsResponse) base.Details;
             set => base.Details = value;
-        }
+        }        
     }
 }
