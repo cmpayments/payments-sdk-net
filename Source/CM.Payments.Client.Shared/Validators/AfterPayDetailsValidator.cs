@@ -5,25 +5,20 @@ using JetBrains.Annotations;
 
 namespace CM.Payments.Client.Validators
 {
-    internal sealed class AfterPayDetailsValidator : AbstractValidator<AfterPayDetailsRequest>
+    internal sealed class AfterPayDetailsValidator : BaseValidator<AfterPayDetailsRequest>
     {
         public AfterPayDetailsValidator()
         {
-            this.RuleFor(d => d.BankAccountNumber).NotNull().Must(BeAValidIban);
-            this.RuleFor(d => d.InvoiceNumber).NotNull().Length(2, 15);
-            this.RuleFor(d => d.IpAddress).NotNull().Must(BeAValidIpAddress);
-            this.RuleFor(d => d.OrderNumber).NotNull().Length(2, 25);
-            this.RuleFor(d => d.PortfolioId).NotNull().GreaterThanOrEqualTo(1).LessThanOrEqualTo(3);
-            this.RuleFor(d => d.Password).NotNull().Length(1, 20);
-            this.RuleFor(d => d.TotalOrderAmount).NotNull();
-            this.RuleFor(d => d.BillToAddress).SetValidator(new OrderAddressValidator());
-            this.RuleFor(d => d.ShipToAddress).SetValidator(new OrderAddressValidator());
-            this.RuleFor(d => d.Orderline).SetCollectionValidator(new OrderLineValidator());
-        }
-
-        private static bool BeAValidIban([NotNull] string iban)
-        {
-            return Regex.IsMatch(iban, @"^[A-Z]{2}[0-9]{2}[A-Z]{4}[0-9]{10}$");
+            RuleFor(d => d.BankAccountNumber).NotNull().Must(BeAValidIban);
+            RuleFor(d => d.InvoiceNumber).NotNull().Length(2, 15);
+            RuleFor(d => d.IpAddress).NotNull().Must(BeAValidIpAddress);
+            RuleFor(d => d.OrderNumber).NotNull().Length(2, 25);
+            RuleFor(d => d.PortfolioId).NotNull().GreaterThanOrEqualTo(1).LessThanOrEqualTo(3);
+            RuleFor(d => d.Password).NotNull().Length(1, 20);
+            RuleFor(d => d.TotalOrderAmount).NotNull();
+            RuleFor(d => d.BillToAddress).SetValidator(new OrderAddressValidator());
+            RuleFor(d => d.ShipToAddress).SetValidator(new OrderAddressValidator());
+            RuleFor(d => d.Orderline).SetCollectionValidator(new OrderLineValidator());
         }
 
         private static bool BeAValidIpAddress([NotNull] string ip)
@@ -31,48 +26,43 @@ namespace CM.Payments.Client.Validators
             return Regex.IsMatch(ip, @"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$");
         }
 
-        private sealed class OrderLineValidator : AbstractValidator<AfterPayDetailsRequest.OrderLine>
+        private sealed class OrderLineValidator : BaseValidator<AfterPayDetailsRequest.OrderLine>
         {
             public OrderLineValidator()
             {
-                this.RuleFor(r => r.ArticleDescription).NotNull().Length(1, 45);
-                this.RuleFor(r => r.ArticleId).NotNull().Length(1, 25);
-                this.RuleFor(r => r.Quantity).NotNull();
-                this.RuleFor(r => r.UnitPrice).NotNull();
-                this.RuleFor(r => r.VatCategory).NotNull();
+                RuleFor(r => r.ArticleDescription).NotNull().Length(1, 45);
+                RuleFor(r => r.ArticleId).NotNull().Length(1, 25);
+                RuleFor(r => r.Quantity).NotNull();
+                RuleFor(r => r.UnitPrice).NotNull();
+                RuleFor(r => r.VatCategory).NotNull();
             }
         }
 
-        private sealed class OrderAddressValidator : AbstractValidator<AfterPayDetailsRequest.OrderAddress>
+        private sealed class OrderAddressValidator : BaseValidator<AfterPayDetailsRequest.OrderAddress>
         {
             public OrderAddressValidator()
             {
-                this.RuleFor(r => r.City).NotEmpty().Length(1, 80);
-                this.RuleFor(r => r.StreetName).NotEmpty().Length(1, 80);
-                this.RuleFor(r => r.HouseNumber).NotNull();
-                this.RuleFor(r => r.IsoCountryCode).NotEmpty().Length(1, 2);
-                this.RuleFor(r => r.PostalCode).NotEmpty().Must(BeAValidPostalCode);
-                this.RuleFor(r => r.Region).NotEmpty().Length(1, 80);
-                this.RuleFor(r => r.Reference).SetValidator(new ReferencePersonValidator());
+                RuleFor(r => r.City).NotEmpty().Length(1, 80);
+                RuleFor(r => r.StreetName).NotEmpty().Length(1, 80);
+                RuleFor(r => r.HouseNumber).NotNull();
+                RuleFor(r => r.IsoCountryCode).NotEmpty().Length(1, 2);
+                RuleFor(r => r.PostalCode).NotEmpty().Must(BeAValidPostalCode);
+                RuleFor(r => r.Region).NotEmpty().Length(1, 80);
+                RuleFor(r => r.Reference).SetValidator(new ReferencePersonValidator());
             }
 
-            private static bool BeAValidPostalCode([NotNull] string postal)
-            {
-                return Regex.IsMatch(postal, @"^[1-9][0-9]{3}\s?([a-zA-Z]{2})?$");
-            }
-
-            private sealed class ReferencePersonValidator : AbstractValidator<AfterPayDetailsRequest.OrderAddress.ReferencePerson>
+            private sealed class ReferencePersonValidator : BaseValidator<AfterPayDetailsRequest.OrderAddress.ReferencePerson>
             {
                 public ReferencePersonValidator()
                 {
-                    this.RuleFor(r => r.LastName).NotNull().Length(1, 30);
-                    this.RuleFor(r => r.Initials).NotNull().Length(1, 20);
-                    this.RuleFor(r => r.EmailAddress).NotEmpty().EmailAddress();
-                    this.RuleFor(r => r.PhoneNumber1).NotEmpty().Length(10);
-                    this.RuleFor(r => r.PhoneNumber2).NotEmpty().Length(10);
-                    this.RuleFor(r => r.Gender).Length(1);
-                    this.RuleFor(r => r.DateOfBirth).NotEmpty();
-                    this.RuleFor(r => r.IsoLanguage).NotEmpty().Length(1, 5);
+                    RuleFor(r => r.LastName).NotNull().Length(1, 30);
+                    RuleFor(r => r.Initials).NotNull().Length(1, 20);
+                    RuleFor(r => r.EmailAddress).NotEmpty().EmailAddress();
+                    RuleFor(r => r.PhoneNumber1).NotEmpty().Length(10);
+                    RuleFor(r => r.PhoneNumber2).NotEmpty().Length(10);
+                    RuleFor(r => r.Gender).Length(1);
+                    RuleFor(r => r.DateOfBirth).NotEmpty();
+                    RuleFor(r => r.IsoLanguage).NotEmpty().Length(1, 5);
                 }
             }
         }

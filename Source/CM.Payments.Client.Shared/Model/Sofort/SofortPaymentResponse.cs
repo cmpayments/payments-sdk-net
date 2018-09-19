@@ -9,6 +9,8 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class SofortPaymentResponse : PaymentResponse
     {
+        internal override PaymentMethod Method => PaymentMethod.SOFORT;
+
         /// <summary>
         /// In depth details of the Sofort response.
         /// </summary>

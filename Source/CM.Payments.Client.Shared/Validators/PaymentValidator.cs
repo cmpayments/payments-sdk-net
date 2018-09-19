@@ -8,22 +8,16 @@ namespace CM.Payments.Client.Validators
     {
         public PaymentValidator()
         {
-            this.RuleFor(p => p.Amount).NotEmpty();
-            this.RuleFor(p => p.Currency).Must(BeAValidIsoFormat).WithMessage("'Currency' must be in the right ISO format.");
-            this.AddValidator<IdealPaymentRequest, IdealValidator>();
-            this.AddValidator<PayPalPaymentRequest, PayPalValidator>();
-            this.AddValidator<AfterPayPaymentRequest, AfterPayValidator>();
-            this.AddValidator<CreditcardPaymentRequest, CreditcardValidator>();
-            this.AddValidator<SofortPaymentRequest, SofortValidator>();
-            this.AddValidator<BancontactPaymentRequest, BancontactValidator>();
-            this.AddValidator<WireTransferPaymentRequest, WireTransferValidator>();
-            this.AddValidator<DirectDebitPaymentRequest, DirectDebitValidator>();
-        }
-
-        private static bool BeAValidIsoFormat(string currency)
-        {
-            var info = new RegionInfo("NL");
-            return info.ISOCurrencySymbol == currency;
+            RuleFor(p => p.Amount).NotEmpty();
+            RuleFor(p => p.Currency).NotNull().Must(BeAValidCurrency).WithMessage($"'{nameof(DirectDebitPaymentRequest.Currency)}' must be in the right ISO format.");
+            AddValidator<IdealPaymentRequest, IdealValidator>();
+            AddValidator<PayPalPaymentRequest, PayPalValidator>();
+            AddValidator<AfterPayPaymentRequest, AfterPayValidator>();
+            AddValidator<CreditcardPaymentRequest, CreditcardValidator>();
+            AddValidator<SofortPaymentRequest, SofortValidator>();
+            AddValidator<BancontactPaymentRequest, BancontactValidator>();
+            AddValidator<WireTransferPaymentRequest, WireTransferValidator>();
+            AddValidator<DirectDebitPaymentRequest, DirectDebitValidator>();
         }
     }
 }

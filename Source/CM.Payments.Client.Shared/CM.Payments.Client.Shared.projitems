@@ -10,6 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DateConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\PaymentRequestConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\RefundDetailsRequestConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\UtcDateTimeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\PaymentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\RefundConverter.cs" />
@@ -43,6 +45,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealPaymentResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Ideal\IdealRefundDetailsRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Issuer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PaymentMethod.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\PaymentRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\PaymentResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\PayPal\PayPalDetailsRequest.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)UnhandledRequestException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\AfterPayDetailsValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\AfterPayValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\BaseValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\BancontactDetailsValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\BancontactValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\ChargeValidator.cs" />

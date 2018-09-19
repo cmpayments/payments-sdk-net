@@ -3,11 +3,11 @@ using FluentValidation;
 
 namespace CM.Payments.Client.Validators
 {
-    internal sealed class BancontactDetailsValidator : AbstractValidator<BancontactDetailsRequest>
+    internal sealed class BancontactDetailsValidator : BaseValidator<BancontactDetailsRequest>
     {
         public BancontactDetailsValidator()
         {
-            this.RuleFor(r => r.PurchaseId).NotEmpty().Length(1, 35);
+            RuleFor(r => r.PurchaseId).NotEmpty().Length(1, 35);
         }
     }
 }

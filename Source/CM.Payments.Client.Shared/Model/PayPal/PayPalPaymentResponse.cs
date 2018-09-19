@@ -9,6 +9,8 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class PayPalPaymentResponse : PaymentResponse
     {
+        internal override PaymentMethod Method => PaymentMethod.PayPal;
+
         /// <summary>
         /// In depth details of the PayPal response.
         /// </summary>

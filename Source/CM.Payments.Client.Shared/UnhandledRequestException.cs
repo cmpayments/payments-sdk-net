@@ -10,6 +10,11 @@ namespace CM.Payments.Client
     public sealed class UnhandledRequestException : Exception
     {
         /// <summary>
+        /// Status code of the HTTP response.
+        /// </summary>
+        public int? StatusCode { get; set; }
+        
+        /// <summary>
         /// Create an exception for an unhandled or faulty request.
         /// </summary>
         /// <param name="message">Message of the exception.</param>
@@ -27,12 +32,7 @@ namespace CM.Payments.Client
         internal UnhandledRequestException(int statusCode, string message)
             : base(message)
         {
-            this.StatusCode = statusCode;
+            StatusCode = statusCode;
         }
-
-        /// <summary>
-        /// Status code of the HTTP response.
-        /// </summary>
-        public int? StatusCode { get; set; }
     }
 }

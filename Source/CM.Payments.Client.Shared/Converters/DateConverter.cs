@@ -7,8 +7,8 @@ namespace CM.Payments.Client.Converters
     {
         public DateConverter()
         {
-            this.DateTimeStyles = DateTimeStyles.AdjustToUniversal;
-            this.DateTimeFormat = "yyyy-MM-dd";
+            DateTimeStyles = DateTimeStyles.AdjustToUniversal;
+            DateTimeFormat = "yyyy-MM-dd";
         }
     }
 }

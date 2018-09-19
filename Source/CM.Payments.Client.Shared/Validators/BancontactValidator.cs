@@ -3,11 +3,12 @@ using FluentValidation;
 
 namespace CM.Payments.Client.Validators
 {
-    internal sealed class BancontactValidator : AbstractValidator<BancontactPaymentRequest>
+    internal sealed class BancontactValidator : BaseValidator<BancontactPaymentRequest>
     {
         public BancontactValidator()
         {
-            this.RuleFor(p => p.Details).SetValidator(new BancontactDetailsValidator());
+            RuleFor(p => p.Currency).NotNull().Must(BeAValidCurrency).WithMessage($"'{nameof(BancontactPaymentRequest.Currency)}' must be in the right ISO format.");
+            RuleFor(p => p.Details).SetValidator(new BancontactDetailsValidator());
         }
     }
 }

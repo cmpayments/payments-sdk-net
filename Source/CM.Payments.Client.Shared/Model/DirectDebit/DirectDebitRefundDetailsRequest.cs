@@ -9,6 +9,8 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class DirectDebitRefundDetailsRequest : RefundDetailsRequest
     {
+        internal override PaymentMethod Method => PaymentMethod.DirectDebit;
+
         /// <summary>
         /// Description of the direct debit refund.
         /// </summary>

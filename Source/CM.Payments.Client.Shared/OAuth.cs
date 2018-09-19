@@ -35,8 +35,8 @@ namespace CM.Payments.Client
         /// <param name="consumerSecret">The consumer secret.</param>
         public OAuth(string consumerKey, string consumerSecret)
         {
-            this._oAuthConsumerKey = consumerKey;
-            this._oAuthConsumerSecret = consumerSecret;
+            _oAuthConsumerKey = consumerKey;
+            _oAuthConsumerSecret = consumerSecret;
         }
 
         /// <summary>
@@ -50,10 +50,9 @@ namespace CM.Payments.Client
         /// <returns></returns>
         public string GenerateSignature(string method, string url, string data, string timeStamp, string nonce)
         {
-            var signatureBase = this.GenerateSignatureBase(method, url, data, timeStamp, nonce);
-            string key = $"{UrlEncode(this._oAuthConsumerKey)}&{UrlEncode(this._oAuthConsumerSecret)}";
-
-            return ComputeHash(key, signatureBase);
+            return ComputeHash(
+                $"{UrlEncode(_oAuthConsumerKey)}&{UrlEncode(_oAuthConsumerSecret)}",
+                GenerateSignatureBase(method, url, data, timeStamp, nonce));
         }
 
         internal string GenerateHeader([NotNull] string method, string url, string data = "")
@@ -61,9 +60,9 @@ namespace CM.Payments.Client
             var auth = new StringBuilder();
             var nonce = GenerateNonce();
             var timeStamp = GenerateTimeStamp();
-            var signature = this.GenerateSignature(method.ToUpper(), url, data, timeStamp, nonce);
+            var signature = GenerateSignature(method.ToUpper(), url, data, timeStamp, nonce);
 
-            auth.Append($"{UrlEncode(OAuthConsumerKeyKey)}=\"{UrlEncode(this._oAuthConsumerKey)}\", ");
+            auth.Append($"{UrlEncode(OAuthConsumerKeyKey)}=\"{UrlEncode(_oAuthConsumerKey)}\", ");
             auth.Append($"{UrlEncode(OAuthNonceKey)}=\"{UrlEncode(nonce)}\", ");
             auth.Append($"{UrlEncode(OAuthSignatureKey)}=\"{UrlEncode(signature)}\", ");
             auth.Append($"{UrlEncode(OAuthSignatureMethodKey)}=\"{UrlEncode(OAuthSignatureType)}\", ");
@@ -75,17 +74,14 @@ namespace CM.Payments.Client
         private static string ComputeHash([NotNull] string key, [NotNull] string data)
         {
             var hmac = new HMACSHA256 {Key = Encoding.ASCII.GetBytes(key)};
-            var hashBytes = hmac.ComputeHash(Encoding.UTF8.GetBytes(data));
 
             var hashString = new StringBuilder();
-            foreach (var t in hashBytes)
+            foreach (var t in hmac.ComputeHash(Encoding.UTF8.GetBytes(data)))
             {
                 hashString.Append(t.ToString("x2"));
             }
 
-            var base64Bytes = Encoding.UTF8.GetBytes(hashString.ToString());
-
-            return Convert.ToBase64String(base64Bytes);
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(hashString.ToString()));
         }
 
         private static string GenerateNonce()
@@ -129,7 +125,7 @@ namespace CM.Payments.Client
             parameters.Add(new Parameter(UrlEncode(OAuthNonceKey), UrlEncode(nonce)));
             parameters.Add(new Parameter(UrlEncode(OAuthTimestampKey), UrlEncode(timeStamp)));
             parameters.Add(new Parameter(UrlEncode(OAuthSignatureMethodKey), UrlEncode(OAuthSignatureType)));
-            parameters.Add(new Parameter(UrlEncode(OAuthConsumerKeyKey), UrlEncode(this._oAuthConsumerKey)));
+            parameters.Add(new Parameter(UrlEncode(OAuthConsumerKeyKey), UrlEncode(_oAuthConsumerKey)));
 
             parameters = parameters.OrderBy(v => v.Name).ToList();
 
@@ -146,8 +142,7 @@ namespace CM.Payments.Client
         private static string GenerateTimeStamp()
         {
             // Default implementation of UNIX time of the current UTC time
-            var ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            return Convert.ToInt64(ts.TotalSeconds).ToString();
+            return $"{(long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalSeconds}";
         }
 
         private static List<Parameter> GetParameters(string parameters)
@@ -212,14 +207,14 @@ namespace CM.Payments.Client
 
         private sealed class Parameter
         {
-            public Parameter(string name, string value)
-            {
-                this.Name = name;
-                this.Value = value;
-            }
-
             public string Name { get; }
             public string Value { get; }
+
+            public Parameter(string name, string value)
+            {
+                Name = name;
+                Value = value;
+            }
         }
     }
 }

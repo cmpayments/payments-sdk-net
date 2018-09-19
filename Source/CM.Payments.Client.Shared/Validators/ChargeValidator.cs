@@ -5,14 +5,15 @@ using System.Linq;
 
 namespace CM.Payments.Client.Validators
 {
-    internal sealed class ChargeValidator : AbstractValidator<ChargeRequest>
+    internal sealed class ChargeValidator : BaseValidator<ChargeRequest>
     {
         public ChargeValidator()
         {
-            this.RuleFor(c => c.Amount).NotEmpty();
-            this.RuleFor(c => c.Payments)
+            RuleFor(c => c.Amount).NotEmpty();
+            RuleFor(c => c.Currency).NotNull().Must(BeAValidCurrency);
+            RuleFor(c => c.Payments)
                 .Must(ContainOneItem)
-                .WithMessage("'Payments' must contain '1' payment.")
+                .WithMessage($"'{nameof(ChargeRequest.Payments)}' must contain '1' payment.")
                 .SetCollectionValidator(new PaymentValidator());
         }
         

@@ -9,6 +9,8 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class BancontactPaymentResponse : PaymentResponse
     {
+        internal override PaymentMethod Method => PaymentMethod.Bancontact;
+
         /// <summary>
         /// In depth details of the Bancontact response.
         /// </summary>

@@ -9,6 +9,8 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class DirectDebitPaymentResponse : PaymentResponse
     {
+        internal override PaymentMethod Method => PaymentMethod.DirectDebit;
+
         /// <summary>
         /// In depth details of the direct debit response.
         /// </summary>

@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using CM.Payments.Client.Converters;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace CM.Payments.Client.Model

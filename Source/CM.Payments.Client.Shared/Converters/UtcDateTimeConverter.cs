@@ -7,8 +7,8 @@ namespace CM.Payments.Client.Converters
     {
         public UtcDateTimeConverter()
         {
-            this.DateTimeStyles = DateTimeStyles.AdjustToUniversal;
-            this.DateTimeFormat = "yyyy-MM-ddTHH:mm:ssZ";
+            DateTimeStyles = DateTimeStyles.AdjustToUniversal;
+            DateTimeFormat = "yyyy-MM-ddTHH:mm:ssZ";
         }
     }
 }

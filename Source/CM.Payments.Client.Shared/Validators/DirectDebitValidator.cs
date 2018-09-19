@@ -3,11 +3,12 @@ using FluentValidation;
 
 namespace CM.Payments.Client.Validators
 {
-    internal sealed class DirectDebitValidator : AbstractValidator<DirectDebitPaymentRequest>
+    internal sealed class DirectDebitValidator : BaseValidator<DirectDebitPaymentRequest>
     {
         public DirectDebitValidator()
         {
-            this.RuleFor(p => p.Details).SetValidator(new DirectDebitDetailsValidator());
+            RuleFor(p => p.Currency).NotNull().Must(BeAValidCurrency).WithMessage($"'{nameof(DirectDebitPaymentRequest.Currency)}' must be in the right ISO format.");
+            RuleFor(p => p.Details).SetValidator(new DirectDebitDetailsValidator());
         }
     }
 }

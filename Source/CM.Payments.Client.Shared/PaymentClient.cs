@@ -19,6 +19,8 @@ namespace CM.Payments.Client
         private readonly ChargeValidator _chargeValidator;
         private readonly QrValidator _qrValidator;
 
+        private const string ApiVersion = "v1";
+
         /// <summary>
         ///     Initialization for the client.
         /// </summary>
@@ -27,8 +29,8 @@ namespace CM.Payments.Client
         /// <param name="baseUri">Optional client base uri. If no uri is provided, the default uri will be used.</param>
         public PaymentClient(string consumerKey, string consumerSecret, Uri baseUri = null) : base(consumerKey, consumerSecret, baseUri)
         {
-            this._chargeValidator = new ChargeValidator();
-            this._qrValidator = new QrValidator();
+            _chargeValidator = new ChargeValidator();
+            _qrValidator = new QrValidator();
         }
 
         /// <summary>
@@ -43,9 +45,7 @@ namespace CM.Payments.Client
             {
                 throw new ArgumentNullException();
             }
-
-            var query = $"charges/v1/{id}";
-            return await this.GetAsync<ChargeResponse>(query, cancellationToken).ConfigureAwait(false);
+            return await GetAsync<ChargeResponse>($"charges/{ApiVersion}/{id}", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -55,8 +55,7 @@ namespace CM.Payments.Client
         /// <returns>List of issuers</returns>
         public async Task<List<Issuer>> GetIssuersAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            const string query = "issuers/v1/ideal";
-            var result = await this.GetAsync<Dictionary<string, string>>(query, cancellationToken).ConfigureAwait(false);
+            var result = await GetAsync<Dictionary<string, string>>($"issuers/{ApiVersion}/ideal", cancellationToken).ConfigureAwait(false);
             return result.Select(p => new Issuer {Name = p.Key, ID = p.Value}).ToList();
         }
 
@@ -72,9 +71,7 @@ namespace CM.Payments.Client
             {
                 throw new ArgumentNullException();
             }
-
-            var query = $"payments/v1/{id}";
-            return await this.GetAsync<PaymentResponse>(query, cancellationToken).ConfigureAwait(false);
+            return await GetAsync<PaymentResponse>($"payments/{ApiVersion}/{id}", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -89,9 +86,7 @@ namespace CM.Payments.Client
             {
                 throw new ArgumentNullException();
             }
-
-            var query = $"qr/v1/{id}";
-            return await this.GetAsync<QrResponse>(query, cancellationToken).ConfigureAwait(false);
+            return await GetAsync<QrResponse>($"qr/{ApiVersion}/{id}", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -106,9 +101,7 @@ namespace CM.Payments.Client
             {
                 throw new ArgumentNullException();
             }
-
-            var query = $"qr/v1/status/{id}";
-            return await this.GetAsync<QrResponse>(query, cancellationToken).ConfigureAwait(false);
+            return await GetAsync<QrResponse>($"qr/{ApiVersion}/status/{id}", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -123,9 +116,7 @@ namespace CM.Payments.Client
             {
                 throw new ArgumentNullException();
             }
-
-            var query = $"refunds/v1/{id}";
-            return await this.GetAsync<RefundResponse>(query, cancellationToken).ConfigureAwait(false);
+            return await GetAsync<RefundResponse>($"refunds/{ApiVersion}/{id}", cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -136,9 +127,8 @@ namespace CM.Payments.Client
         /// <returns>A charge response object.</returns>
         public async Task<ChargeResponse> PayAsync(ChargeRequest charge, CancellationToken cancellationToken = default(CancellationToken))
         {
-            this._chargeValidator.ValidateAndThrow(charge);
-            var query = "charges/v1";
-            return await this.PostAsync<ChargeResponse>(query, charge, cancellationToken).ConfigureAwait(false);
+            _chargeValidator.ValidateAndThrow(charge);
+            return await PostAsync<ChargeResponse>($"charges/{ApiVersion}", charge, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -149,9 +139,8 @@ namespace CM.Payments.Client
         /// <returns>A QR response object.</returns>
         public async Task<QrResponse> QrAsync(QrRequest qr, CancellationToken cancellationToken = default(CancellationToken))
         {
-            this._qrValidator.ValidateAndThrow(qr);
-            var query = "qr/v1";
-            return await this.PostAsync<QrResponse>(query, qr, cancellationToken).ConfigureAwait(false);
+            _qrValidator.ValidateAndThrow(qr);
+            return await PostAsync<QrResponse>($"qr/{ApiVersion}", qr, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -166,9 +155,7 @@ namespace CM.Payments.Client
             {
                 throw new ArgumentNullException(nameof(refund));
             }
-
-            const string query = "refunds/v1";
-            return await this.PostAsync<RefundResponse>(query, refund, cancellationToken).ConfigureAwait(false);
+            return await PostAsync<RefundResponse>($"refunds/{ApiVersion}", refund, cancellationToken).ConfigureAwait(false);
         }
     }
 }

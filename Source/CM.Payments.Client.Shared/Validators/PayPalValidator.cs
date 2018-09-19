@@ -3,11 +3,12 @@ using FluentValidation;
 
 namespace CM.Payments.Client.Validators
 {
-    internal sealed class PayPalValidator : AbstractValidator<PayPalPaymentRequest>
+    internal sealed class PayPalValidator : BaseValidator<PayPalPaymentRequest>
     {
         public PayPalValidator()
         {
-            this.RuleFor(p => p.Details).SetValidator(new PayPalDetailsValidator());
+            RuleFor(p => p.Currency).NotNull().Must(BeAValidCurrency).WithMessage($"'{nameof(PayPalPaymentRequest.Currency)}' must be in the right ISO format.");
+            RuleFor(p => p.Details).SetValidator(new PayPalDetailsValidator());
         }
     }
 }

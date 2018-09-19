@@ -9,6 +9,8 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class WireTransferPaymentResponse : PaymentResponse
     {
+        internal override PaymentMethod Method => PaymentMethod.WireTransfer;
+
         /// <summary>
         /// In depth details of the wire transfer response.
         /// </summary>
