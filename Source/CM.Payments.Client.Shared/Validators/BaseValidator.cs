@@ -33,16 +33,6 @@ namespace CM.Payments.Client.Validators
         }
 
         /// <summary>
-        /// Check if provided string is a valid iban.
-        /// </summary>
-        /// <param name="iban">The iban.</param>
-        /// <returns></returns>
-        internal static bool BeAValidIban([NotNull] string iban)
-        {
-            return Regex.IsMatch(iban, @"^[A-Z]{2}[0-9]{2}[A-Z]{4}[0-9]{10}$");
-        }
-
-        /// <summary>
         /// Check if provided string is a valid currency.
         /// </summary>
         /// <param name="currency">The iban.</param>
