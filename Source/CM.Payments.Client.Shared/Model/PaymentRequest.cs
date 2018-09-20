@@ -1,7 +1,7 @@
-﻿using JetBrains.Annotations;
+﻿using CM.Payments.Client.Converters;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
-using CM.Payments.Client.Converters;
 
 namespace CM.Payments.Client.Model
 {
@@ -34,5 +34,18 @@ namespace CM.Payments.Client.Model
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// Whether the payment is a recurring payment, or not.
+        /// </summary>
+        [JsonProperty("recurring")]
+        public bool Recurring { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the recurring payment.
+        /// </summary>
+        /// <remarks>Can be empty when it is the first of a recurring payment.</remarks>
+        [JsonProperty("recurring_id")]
+        public string RecurringId { get; set; }
     }
 }
