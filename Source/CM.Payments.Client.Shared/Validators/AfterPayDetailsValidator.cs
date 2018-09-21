@@ -9,7 +9,7 @@ namespace CM.Payments.Client.Validators
     {
         public AfterPayDetailsValidator()
         {
-            RuleFor(d => d.BankAccountNumber).NotNull().Must(BeAValidIban);
+            RuleFor(d => d.BankAccountNumber).NotNull();
             RuleFor(d => d.InvoiceNumber).NotNull().Length(2, 15);
             RuleFor(d => d.IpAddress).NotNull().Must(BeAValidIpAddress);
             RuleFor(d => d.OrderNumber).NotNull().Length(2, 25);
