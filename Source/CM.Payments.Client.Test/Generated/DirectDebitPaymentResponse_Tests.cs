@@ -76,8 +76,8 @@ namespace CM.Payments.Client.Test
 		    {
 		        // Check only date and time up to seconds.. Json.NET does not save milliseconds.
 		        Assert.AreEqual(
-		            new DateTime(obj.Details.MandateStartDate.Value.Year, obj.Details.MandateStartDate.Value.Month, obj.Details.MandateStartDate.Value.Day, obj.Details.MandateStartDate.Value.Hour, obj.Details.MandateStartDate.Value.Minute, obj.Details.MandateStartDate.Value.Second),
-		            new DateTime(deserialized.Details.MandateStartDate.Value.Year, deserialized.Details.MandateStartDate.Value.Month, deserialized.Details.MandateStartDate.Value.Day, deserialized.Details.MandateStartDate.Value.Hour, deserialized.Details.MandateStartDate.Value.Minute, deserialized.Details.MandateStartDate.Value.Second));
+		            new DateTime(obj.Details.MandateStartDate.Value.Year, obj.Details.MandateStartDate.Value.Month, obj.Details.MandateStartDate.Value.Day),
+		            new DateTime(deserialized.Details.MandateStartDate.Value.Year, deserialized.Details.MandateStartDate.Value.Month, deserialized.Details.MandateStartDate.Value.Day));
 		    }
             Assert.AreEqual(obj.Details.Name, deserialized.Details.Name);
 			Assert.AreEqual(obj.Details.PurchaseId, deserialized.Details.PurchaseId);
