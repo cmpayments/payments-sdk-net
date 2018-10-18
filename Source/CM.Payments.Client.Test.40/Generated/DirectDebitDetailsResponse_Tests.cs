@@ -54,16 +54,22 @@ namespace CM.Payments.Client.Test
 			Assert.AreEqual(obj.ExpiredUrl, deserialized.ExpiredUrl);
 			Assert.AreEqual(obj.FailedUrl, deserialized.FailedUrl);
 			Assert.AreEqual(obj.MandateId, deserialized.MandateId);
-			// Check only date and time up to seconds.. Json.NET does not save milliseconds.
-			Assert.AreEqual(
-				new DateTime(obj.MandateStartDate.Year, obj.MandateStartDate.Month, obj.MandateStartDate.Day),
-				new DateTime(deserialized.MandateStartDate.Year, deserialized.MandateStartDate.Month, deserialized.MandateStartDate.Day));
+		    if (obj.MandateStartDate.HasValue && deserialized.MandateStartDate.HasValue)
+		    {
+		        // Check only date and time up to seconds.. Json.NET does not save milliseconds.
+		        Assert.AreEqual(
+		            new DateTime(obj.MandateStartDate.Value.Year, obj.MandateStartDate.Value.Month, obj.MandateStartDate.Value.Day, obj.MandateStartDate.Value.Hour, obj.MandateStartDate.Value.Minute, obj.MandateStartDate.Value.Second),
+		            new DateTime(deserialized.MandateStartDate.Value.Year, deserialized.MandateStartDate.Value.Month, deserialized.MandateStartDate.Value.Day, deserialized.MandateStartDate.Value.Hour, deserialized.MandateStartDate.Value.Minute, deserialized.MandateStartDate.Value.Second));
+		    }
 			Assert.AreEqual(obj.Name, deserialized.Name);
 			Assert.AreEqual(obj.PurchaseId, deserialized.PurchaseId);
-			// Check only date and time up to seconds.. Json.NET does not save milliseconds.
-			Assert.AreEqual(
-				new DateTime(obj.ReversedOn.Year, obj.ReversedOn.Month, obj.ReversedOn.Day, obj.ReversedOn.Hour, obj.ReversedOn.Minute, obj.ReversedOn.Second),
-				new DateTime(deserialized.ReversedOn.Year, deserialized.ReversedOn.Month, deserialized.ReversedOn.Day, deserialized.ReversedOn.Hour, deserialized.ReversedOn.Minute, deserialized.ReversedOn.Second));
+		    if (obj.ReversedOn.HasValue && deserialized.ReversedOn.HasValue)
+		    {
+		        // Check only date and time up to seconds.. Json.NET does not save milliseconds.
+		        Assert.AreEqual(
+		            new DateTime(obj.ReversedOn.Value.Year, obj.ReversedOn.Value.Month, obj.ReversedOn.Value.Day, obj.ReversedOn.Value.Hour, obj.ReversedOn.Value.Minute, obj.ReversedOn.Value.Second),
+		            new DateTime(deserialized.ReversedOn.Value.Year, deserialized.ReversedOn.Value.Month, deserialized.ReversedOn.Value.Day, deserialized.ReversedOn.Value.Hour, deserialized.ReversedOn.Value.Minute, deserialized.ReversedOn.Value.Second));
+		    }
 			Assert.AreEqual(obj.ReverseReasonCode, deserialized.ReverseReasonCode);
 			Assert.AreEqual(obj.ReverseReasonDescription, deserialized.ReverseReasonDescription);
 			Assert.AreEqual(obj.SuccessUrl, deserialized.SuccessUrl);
