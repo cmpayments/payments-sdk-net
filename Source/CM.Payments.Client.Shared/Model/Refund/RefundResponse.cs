@@ -69,6 +69,6 @@ namespace CM.Payments.Client.Model
         /// Date and time the refund is updated.
         /// </summary>
         [JsonProperty("updated_at")]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }
