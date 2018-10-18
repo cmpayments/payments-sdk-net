@@ -20,7 +20,7 @@ namespace CM.Payments.Client.Model
         /// Date and time at which the transaction is reversed.
         /// </summary>
         [JsonProperty("reversed_on")]
-        public DateTime ReversedOn { get; set; }
+        public DateTime? ReversedOn { get; set; }
 
         /// <summary>
         /// SEPA return reason code of the reversed transaction.
