@@ -45,13 +45,13 @@ namespace CM.Payments.Client.Model
         /// Expiration date of the payment.
         /// </summary>
         [JsonProperty("due_date", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
 
         /// <summary>
         /// The maximum date of paying this transaction.
         /// </summary>
         [JsonProperty("expires_at", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime ExpiresAt { get; set; }
+        public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
         /// Payment method used to make the payment.
@@ -99,6 +99,6 @@ namespace CM.Payments.Client.Model
         /// Update date of the payment.
         /// </summary>
         [JsonProperty("updated_at", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

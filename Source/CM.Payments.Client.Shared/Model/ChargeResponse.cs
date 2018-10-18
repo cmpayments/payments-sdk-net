@@ -49,6 +49,6 @@ namespace CM.Payments.Client.Model
         /// Date and time the charge is updated.
         /// </summary>
         [JsonProperty("updated_at")]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }
