@@ -41,9 +41,10 @@ namespace CM.Payments.Client.Converters
 
             var token = JToken.Load(reader);
 
-            switch (Enum.Parse(typeof(PaymentMethod), token["payment_method"].Value<string>()))
+            switch (Enum.Parse(typeof(PaymentMethod), token["payment_method"].Value<string>().Replace(" ", "_")))
             {
                 case PaymentMethod.iDEAL:
+                case PaymentMethod.iDEAL_QR:
                     target = new IdealPaymentResponse();
                     break;
                 case PaymentMethod.PayPal:

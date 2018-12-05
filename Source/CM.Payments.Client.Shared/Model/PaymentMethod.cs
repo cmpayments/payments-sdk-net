@@ -12,6 +12,7 @@ namespace CM.Payments.Client.Model
     public enum PaymentMethod
     {
         iDEAL,
+        iDEAL_QR,
         PayPal,
         AfterPay,
         Creditcard,
