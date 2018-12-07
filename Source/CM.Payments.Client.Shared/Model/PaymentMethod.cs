@@ -11,14 +11,14 @@ namespace CM.Payments.Client.Model
     [JsonConverter(typeof(StringEnumConverter))]
     public enum PaymentMethod
     {
-        iDEAL,
-        iDEAL_QR,
+        Ideal,
+        IdealQR,
         PayPal,
         AfterPay,
         Creditcard,
         Bancontact,
         WireTransfer,
-        SOFORT,
+        Sofort,
         DirectDebit
     }
 }

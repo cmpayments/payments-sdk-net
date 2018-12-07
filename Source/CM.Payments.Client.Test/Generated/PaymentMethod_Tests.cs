@@ -36,7 +36,7 @@ namespace CM.Payments.Client.Test
 		[TestMethod]
 		public void PaymentMethod_iDEAL()
 		{
-			var obj = PaymentMethod.iDEAL;
+			var obj = PaymentMethod.Ideal;
 			var deserialized = ConversionTest(obj);
 			Assert.IsNotNull(deserialized);
 			Assert.AreEqual(obj, deserialized);
@@ -90,7 +90,7 @@ namespace CM.Payments.Client.Test
 		[TestMethod]
 		public void PaymentMethod_SOFORT()
 		{
-			var obj = PaymentMethod.SOFORT;
+			var obj = PaymentMethod.Sofort;
 			var deserialized = ConversionTest(obj);
 			Assert.IsNotNull(deserialized);
 			Assert.AreEqual(obj, deserialized);

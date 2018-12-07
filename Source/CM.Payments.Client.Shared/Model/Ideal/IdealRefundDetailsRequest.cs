@@ -8,6 +8,6 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class IdealRefundDetailsRequest : RefundDetailsRequest
     {
-        internal override PaymentMethod Method => PaymentMethod.iDEAL;
+        internal override PaymentMethod Method => PaymentMethod.Ideal;
     }
 }

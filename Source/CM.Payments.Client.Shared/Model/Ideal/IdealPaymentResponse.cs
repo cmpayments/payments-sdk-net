@@ -9,7 +9,7 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class IdealPaymentResponse : PaymentResponse
     {
-        internal override PaymentMethod Method => PaymentMethod.iDEAL;
+        internal override PaymentMethod Method => PaymentMethod.Ideal;
 
         /// <summary>
         /// In depth details of the iDEAL response.

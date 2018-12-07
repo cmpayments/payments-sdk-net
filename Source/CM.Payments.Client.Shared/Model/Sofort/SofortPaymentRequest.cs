@@ -9,7 +9,7 @@ namespace CM.Payments.Client.Model
     [PublicAPI]
     public sealed class SofortPaymentRequest : PaymentRequest
     {
-        internal override PaymentMethod Method { get; } = PaymentMethod.SOFORT;
+        internal override PaymentMethod Method { get; } = PaymentMethod.Sofort;
 
         /// <summary>
         /// Contains more in depth information about the Payment.

@@ -39,7 +39,7 @@ namespace CM.Payments.Client.Converters
             RefundDetailsRequest target;
             var token = JToken.Load(reader);
 
-            switch (Enum.Parse(typeof(PaymentMethod), token["payment_method"].Value<string>()))
+            switch (Enum.Parse(typeof(PaymentMethod), token["payment_method"].Value<string>().Replace(" ", string.Empty), true))
             {
                 case PaymentMethod.AfterPay:
                     target = new AfterPayRefundDetailsRequest();
@@ -47,7 +47,8 @@ namespace CM.Payments.Client.Converters
                 case PaymentMethod.DirectDebit:
                     target = new DirectDebitRefundDetailsRequest();
                     break;
-                case PaymentMethod.iDEAL:
+                case PaymentMethod.Ideal:
+                case PaymentMethod.IdealQR:
                     target = new IdealRefundDetailsRequest();
                     break;
                 default:

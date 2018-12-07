@@ -38,9 +38,10 @@ namespace CM.Payments.Client.Converters
             PaymentRequest target;
             var token = JToken.Load(reader);
 
-            switch (Enum.Parse(typeof(PaymentMethod), token["payment_method"].Value<string>()))
+            switch (Enum.Parse(typeof(PaymentMethod), token["payment_method"].Value<string>().Replace(" ", string.Empty), true))
             {
-                case PaymentMethod.iDEAL:
+                case PaymentMethod.Ideal:
+                case PaymentMethod.IdealQR:
                     target = new IdealPaymentRequest();
                     break;
                 case PaymentMethod.PayPal:
@@ -58,7 +59,7 @@ namespace CM.Payments.Client.Converters
                 case PaymentMethod.WireTransfer:
                     target = new WireTransferPaymentRequest();
                     break;
-                case PaymentMethod.SOFORT:
+                case PaymentMethod.Sofort:
                     target = new SofortPaymentRequest();
                     break;
                 case PaymentMethod.DirectDebit:
