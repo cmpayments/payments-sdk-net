@@ -24,7 +24,7 @@ Currently the following payment methods are supported:
 For installation, reference the [NuGet][] package in your project.
 
 ```
-PM> Install-Package CM.Payment.SDK
+PM> Install-Package CM.Payments.SDK
 ```
 
 ### 2. Create client
