@@ -1,4 +1,4 @@
-version: 1.2.1.{build}
+version: 1.2.2.{build}
 image: Visual Studio 2017
 configuration: Release
 assembly_info:
@@ -26,6 +26,6 @@ artifacts:
 deploy:
   provider: NuGet
   api_key:
-    secure: J0TIL622rEmwgQwM1u36ztPiVjQtT63HqwM7CyHajWqc5xqFQP7iFGkY2otBVGjr #  https://ci.appveyor.com/tools/encrypt
+    secure: 7yB5K95cHcYJTg4/38WCcj4yC3H1Jzm4+CcJySQoLv/JwA6lUGU/05BKsix3D6wW  #  https://ci.appveyor.com/tools/encrypt
   skip_symbols: true
   artifact: /.*\.nupkg/
