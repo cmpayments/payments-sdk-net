@@ -20,17 +20,17 @@
     <!-- Dependencies are automatically installed when the package is installed -->
     <dependencies>
       <group targetFramework="net45">
-        <dependency id="FluentValidation" version="6.4.0" />
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="FluentValidation" version="7.0.0" />
+        <dependency id="Newtonsoft.Json" version="11.0.2" />
       </group>
       <group targetFramework="netcore">
-        <dependency id="FluentValidation" version="6.4.0" />
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="FluentValidation" version="7.0.0" />
+        <dependency id="Newtonsoft.Json" version="11.0.2" />
         <dependency id="System.Reflection.TypeExtensions" version="4.1.0" />
       </group>
       <group targetFramework="net40">
         <dependency id="FluentValidation" version="6.4.0" />
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="Newtonsoft.Json" version="11.0.2" />
         <dependency id="Microsoft.Bcl" version="1.1.10" />
         <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
         <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
