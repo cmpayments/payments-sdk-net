@@ -15,6 +15,7 @@ namespace CM.Payments.Client
     /// </summary>
     public sealed class OAuth
     {
+        private static readonly char[] HexUpperChars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
         private const string OAuthConsumerKeyKey = "oauth_consumer_key";
         private const string OAuthNonceKey = "oauth_nonce";
         private const string OAuthParameterPrefix = "oauth_";
@@ -200,9 +201,37 @@ namespace CM.Payments.Client
             return sb.ToString();
         }
 
+        private static void EscapeAsciiChar(char ch, char[] to, ref int pos)
+        {
+            to[pos++] = '%';
+            to[pos++] = HexUpperChars[(ch & 0xf0) >> 4];
+            to[pos++] = HexUpperChars[ch & 0xf];
+        }
+
+        // Transforms a character into its hexadecimal representation
+        // This is a reimplementation of Uri.HexEscape since it is NOT available in DotNet Core
+        private static string HexEscape(char character)
+        {
+            if (character > '\xff')
+            {
+                throw new ArgumentOutOfRangeException("character");
+            }
+            char[] chars = new char[3];
+            int pos = 0;
+            EscapeAsciiChar(character, chars, ref pos);
+            return new string(chars);
+        }
+
         private static string UrlEncode([NotNull] string value)
         {
-            return new Regex(@"%[a-f0-9]{2}").Replace(Uri.EscapeDataString(value), match => match.Value.ToUpperInvariant()).Replace("+", "%20");
+            // Start with RFC 2396 escaping by calling Uri.EscapeDataString to do the work.
+            // This MAY sometimes exhibit RFC 3986 behavior (according to the documentation).
+            // If it does, the escaping we do that follows it will be a no-op since the
+            // characters we search for to replace can't possibly exist in the string.
+            var s = Regex.Replace(Uri.EscapeDataString(value), @"%[a-f0-9]{2}", match => match.Value.ToUpperInvariant()).Replace("+", "%20");
+
+            // Upgrade the escaping to RFC 3986, if necessary, and return the value
+            return Regex.Replace(s, @"[\!*\'\(\)]", match => HexEscape(Convert.ToChar(match.Value[0].ToString())));
         }
 
         private sealed class Parameter
