@@ -23,10 +23,11 @@
         <dependency id="FluentValidation" version="7.0.0" />
         <dependency id="Newtonsoft.Json" version="11.0.2" />
       </group>
-      <group targetFramework="netcore">
+      <group targetFramework="netstandard1.6">
         <dependency id="FluentValidation" version="7.0.0" />
         <dependency id="Newtonsoft.Json" version="11.0.2" />
-        <dependency id="System.Reflection.TypeExtensions" version="4.1.0" />
+        <dependency id="System.Reflection.TypeExtensions" version="4.4.0" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.0" />
       </group>
       <group targetFramework="net40">
         <dependency id="FluentValidation" version="6.4.0" />
@@ -40,7 +41,7 @@
   </metadata>
 
   <files>
-    <file src="CM.Payments.Client.Core\bin\$configuration$\netstandard1.6\CM.Payments.Client.*" target="lib\netcore\" />
+    <file src="CM.Payments.Client.Core\bin\$configuration$\netstandard1.6\CM.Payments.Client.*" target="lib\netstandard1.6\" />
     <file src="CM.Payments.Client.Net45\bin\$configuration$\CM.Payments.Client.*" target="lib\net45\" />
     <file src="CM.Payments.Client.Net40\bin\$configuration$\CM.Payments.Client.*" target="lib\net40\" />
   </files>
