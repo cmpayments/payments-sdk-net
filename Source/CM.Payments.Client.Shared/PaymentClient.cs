@@ -144,6 +144,22 @@ namespace CM.Payments.Client
         }
 
         /// <summary>
+        /// Create a batch of QR codes for iDEAL.
+        /// </summary>
+        /// <param name="request">QR code information.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A list of QR codes.</returns>
+        public Task<MultiQrResponse> MultiQrAsync(MultiQrRequest request, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            foreach (var qr in request.Data)
+            {
+                _qrValidator.ValidateAndThrow(qr);
+            }
+
+            return PostAsync<MultiQrResponse>($"qr/{ApiVersion}/generate-batch", request, cancellationToken);
+        }
+
+        /// <summary>
         ///     Refund a payment (AfterPay and iDeal only).
         /// </summary>
         /// <param name="refund">A refund object.</param>
