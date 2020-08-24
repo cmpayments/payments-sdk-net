@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CM.Payments.Client.Shared", "CM.Payments.Client.Shared\CM.Payments.Client.Shared.shproj", "{8D854DE8-54F4-4DAD-B05F-21ACBE4A1DFB}"
 EndProject
@@ -29,6 +29,7 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		CM.Payments.Client.Shared\CM.Payments.Client.Shared.projitems*{8d854de8-54f4-4dad-b05f-21acbe4a1dfb}*SharedItemsImports = 13
 		CM.Payments.Client.Shared\CM.Payments.Client.Shared.projitems*{b80c3bb9-940c-4e9c-968b-20faa28c3d2c}*SharedItemsImports = 4
+		CM.Payments.Client.Shared\CM.Payments.Client.Shared.projitems*{bae4ed17-8c0a-4643-9b9e-ca06206b827b}*SharedItemsImports = 5
 		CM.Payments.Client.Shared\CM.Payments.Client.Shared.projitems*{cfb93ca7-3c7d-495d-bdfb-53e08ad88899}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

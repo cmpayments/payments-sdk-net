@@ -52,6 +52,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\PayPal\PayPalDetailsResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\PayPal\PayPalPaymentRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\PayPal\PayPalPaymentResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\QR\MultiQrRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\QR\MultiQrResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\QR\QrReference.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\QR\QrRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\QR\QrResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Refund\RefundRequest.cs" />
