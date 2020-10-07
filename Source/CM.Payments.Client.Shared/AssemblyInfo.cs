@@ -14,7 +14,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCopyright("Copyright © 2017")]
 
 [assembly: AssemblyVersion("1.1.11.0")]
-[assembly: AssemblyInformationalVersion("1.1.11.0")]
+[assembly: AssemblyInformationalVersion("1.2.0.0")]
 [assembly: AssemblyFileVersion("1.1.11.0")]
 
 [assembly: InternalsVisibleTo("CM.Payments.Client.Test")]
