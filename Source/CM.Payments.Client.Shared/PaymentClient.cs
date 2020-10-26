@@ -11,10 +11,36 @@ using JetBrains.Annotations;
 namespace CM.Payments.Client
 {
     /// <summary>
+    ///     Client interface for CM Payments API.
+    /// </summary>
+    public interface IPaymentClient
+    {
+        Task<ChargeResponse> GetChargeAsync(string id, CancellationToken cancellationToken = default);
+
+        Task<List<Issuer>> GetIssuersAsync(CancellationToken cancellationToken = default);
+
+        Task<PaymentResponse> GetPaymentAsync([NotNull] string id, CancellationToken cancellationToken = default);
+
+        Task<QrResponse> GetQrAsync([NotNull] string id, CancellationToken cancellationToken = default);
+
+        Task<QrResponse> GetQrStatusAsync([NotNull] string id, CancellationToken cancellationToken = default);
+
+        Task<RefundResponse> GetRefundAsync([NotNull] string id, CancellationToken cancellationToken = default);
+
+        Task<ChargeResponse> PayAsync(ChargeRequest charge, CancellationToken cancellationToken = default);
+
+        Task<QrResponse> QrAsync(QrRequest qr, CancellationToken cancellationToken = default);
+
+        Task<MultiQrResponse> MultiQrAsync(MultiQrRequest request, CancellationToken cancellationToken = default);
+
+        Task<RefundResponse> RefundAsync([NotNull] RefundRequest refund, CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
     ///     Client for CM Payments API.
     /// </summary>
     [PublicAPI]
-    public sealed class PaymentClient : RestBaseClient
+    public sealed class PaymentClient : RestBaseClient, IPaymentClient
     {
         private readonly ChargeValidator _chargeValidator;
         private readonly QrValidator _qrValidator;
@@ -56,7 +82,7 @@ namespace CM.Payments.Client
         public async Task<List<Issuer>> GetIssuersAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             var result = await GetAsync<Dictionary<string, string>>($"issuers/{ApiVersion}/ideal", cancellationToken).ConfigureAwait(false);
-            return result.Select(p => new Issuer {Name = p.Key, ID = p.Value}).ToList();
+            return result.Select(p => new Issuer { Name = p.Key, ID = p.Value }).ToList();
         }
 
         /// <summary>
